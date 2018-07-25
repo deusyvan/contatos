@@ -7,6 +7,8 @@ class Contato {
     public function __construct(){
         
         //acessando na propria classe this
-        $this->pdo = new PDO("mysql:dbname=projeto_contatos;host=localhost","root","root");
+        $this->pdo = new PDO("mysql:dbname=projeto_contatos;host=localhost","admin","admin@12");
+        
+        echo "Fez a conexão no banco";
     }
 }
