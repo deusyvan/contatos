@@ -9,6 +9,5 @@ class Contato {
         //acessando na propria classe this
         $this->pdo = new PDO("mysql:dbname=projeto_contatos;host=localhost","admin","admin@12");
         
-        echo "Fez a conexão no banco";
     }
 }
