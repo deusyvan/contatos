@@ -65,3 +65,40 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-07-26 14:18:56
+
+-- Criar tabela auxiliares
+
+CREATE TABLE `projeto_contatos`.`usuarios` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `senha` VARCHAR(32) NOT NULL,
+  `telefone` VARCHAR(30) NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `projeto_contatos`.`perfil` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TABLE `projeto_contatos`.`perfil` 
+RENAME TO  `projeto_contatos`.`anuncios` ;
+
+ALTER TABLE `projeto_contatos`.`anuncios` 
+CHANGE COLUMN `nome` `id_usuario` INT(11) NOT NULL ;
+
+ALTER TABLE `projeto_contatos`.`anuncios` 
+ADD COLUMN `id_categoria` INT(11) NOT NULL AFTER `id_usuario`,
+ADD COLUMN `titulo` VARCHAR(100) NOT NULL AFTER `id_categoria`,
+ADD COLUMN `descricao` VARCHAR(100) NOT NULL AFTER `titulo`,
+ADD COLUMN `status` INT(11) NOT NULL AFTER `descricao`,
+ADD COLUMN `data_criacao` DATETIME NOT NULL AFTER `status`,
+ADD COLUMN `data_envio` DATETIME NULL AFTER `data_criacao`;
+
+
+
+
+
+
+
+-- concluído criação das tabelas auxiliares
