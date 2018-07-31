@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `projeto_contatos` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `projeto_contatos`;
 -- MySQL dump 10.16  Distrib 10.1.26-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: projeto_contatos
@@ -42,18 +44,49 @@ CREATE TABLE `contatos` (
   `pais` varchar(100) DEFAULT NULL,
   `outro_fone` varchar(45) DEFAULT NULL,
   `categoria` varchar(300) DEFAULT NULL,
+  `id_categoria` int(11) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12576 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `mensagens`
+--
+
+DROP TABLE IF EXISTS `mensagens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mensagens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `descricao` varchar(100) NOT NULL,
+  `status` int(11) NOT NULL,
+  `data_criacao` datetime NOT NULL,
+  `data_envio` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contatos`
+-- Table structure for table `usuarios`
 --
 
-LOCK TABLES `contatos` WRITE;
-/*!40000 ALTER TABLE `contatos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contatos` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(32) NOT NULL,
+  `telefone` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -64,41 +97,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-26 14:18:56
-
--- Criar tabela auxiliares
-
-CREATE TABLE `projeto_contatos`.`usuarios` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(100) NOT NULL,
-  `email` VARCHAR(100) NOT NULL,
-  `senha` VARCHAR(32) NOT NULL,
-  `telefone` VARCHAR(30) NULL,
-  PRIMARY KEY (`id`));
-
-CREATE TABLE `projeto_contatos`.`perfil` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`id`));
-
-ALTER TABLE `projeto_contatos`.`perfil` 
-RENAME TO  `projeto_contatos`.`anuncios` ;
-
-ALTER TABLE `projeto_contatos`.`anuncios` 
-CHANGE COLUMN `nome` `id_usuario` INT(11) NOT NULL ;
-
-ALTER TABLE `projeto_contatos`.`anuncios` 
-ADD COLUMN `id_categoria` INT(11) NOT NULL AFTER `id_usuario`,
-ADD COLUMN `titulo` VARCHAR(100) NOT NULL AFTER `id_categoria`,
-ADD COLUMN `descricao` VARCHAR(100) NOT NULL AFTER `titulo`,
-ADD COLUMN `status` INT(11) NOT NULL AFTER `descricao`,
-ADD COLUMN `data_criacao` DATETIME NOT NULL AFTER `status`,
-ADD COLUMN `data_envio` DATETIME NULL AFTER `data_criacao`;
-
-
-
-
-
-
-
--- concluído criação das tabelas auxiliares
+-- Dump completed on 2018-07-31 13:33:58
