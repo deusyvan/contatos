@@ -1,6 +1,18 @@
 <?php require 'pages/header.php'; ?>
 <div class="container">
 	<h1>Cadastre-se</h1>
+	<?php 
+	   require 'classes/usuarios.class.php';
+	   $u = new Usuarios();
+	   if (isset($_POST['nome']) && !empty($_POST['nome'])){
+	       $nome = addslashes($_POST['nome']);
+	       $email = addslashes($_POST['email']);
+	       $senha = $_POST['senha'];
+	       $telefone = addslashes($_POST['telefone']);
+	       
+	       $u->cadastrar();
+	   }
+	?>
 	<form method="POST">
 		<div class="form-group">
 			<label for="nome">Nome: </label> 
