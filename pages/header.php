@@ -18,6 +18,7 @@
 				<?php if (isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])):?>
     				<li><a href="#">Usuário: <?php echo $_SESSION['cNome']; ?></a></li>
     				<li><a href="meus-contatos.php">Meus Contatos</a></li>
+    				<li><a href="minhas-mensagens.php">Minhas Mensagens</a></li>
     				<li><a href="sair.php">Sair</a></li>
     			<?php  else:?>
         			<li><a href="cadastre-se.php">Cadastre-se</a></li>

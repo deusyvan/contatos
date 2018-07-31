@@ -12,6 +12,7 @@ if (empty($_SESSION['cLogin'])){
 
  	<div class="container">
 		<h1>Meus Contatos</h1>
+		<a href="add-contato.php" class="btn btn-default">Adicionar Contato</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -27,7 +28,7 @@ if (empty($_SESSION['cLogin'])){
 			require 'classes/contatos.class.php';
 			$c = new Contatos();
 			
-			$contatos = $a->getMeusContatos();
+			$contatos = $c->getMeusContatos();
 			foreach ($contatos as $contato):			
 			?>
 			<tr>
