@@ -2,8 +2,8 @@
 	
 	<div class="container-fluid">
 		<div class="jumbotron">
-			<h2>Nós temos hoje 20 mensagens</h2>
-			<p>E mais de 300 usuários cadastrados</p>
+			<h2>Bem vindo a Agenda Eletrônica</h2>
+			<p>Temos cadastrados mais de 30 contatos</p>
 		</div>
 		
 		<div class="row">
@@ -11,7 +11,7 @@
 				<h4>Pesquisa Avançada</h4>
 			</div>
 			<div class="col-sm-9">
-				<h4>Últimas mensagens</h4>
+				<h4>Últimos contatos cadastrados</h4>
 			</div>
 		</div>
 	</div>
