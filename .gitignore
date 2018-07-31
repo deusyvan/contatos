@@ -1,7 +1,7 @@
 .buildpath
 .project
 .settings/
-/bd/
+bd/*
 
 # CakePHP 3
 

@@ -1,3 +1,4 @@
+
 CREATE DATABASE  IF NOT EXISTS `projeto_contatos` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `projeto_contatos`;
 -- MySQL dump 10.16  Distrib 10.1.26-MariaDB, for debian-linux-gnu (x86_64)
