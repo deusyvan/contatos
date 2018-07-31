@@ -10,7 +10,15 @@
 	       $senha = $_POST['senha'];
 	       $telefone = addslashes($_POST['telefone']);
 	       
-	       $u->cadastrar();
+	       if (!empty($nome) && !empty($email) && !empty($senha)){
+	           $u->cadastrar($nome, $email,$senha, $telefone);
+	       } else {
+	           ?>
+	           <div class="alert alert-warning">
+	           	Preencha todos os campos
+	           </div>
+	           <?php 
+	       }
 	   }
 	?>
 	<form method="POST">
