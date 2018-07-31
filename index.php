@@ -1,4 +1,4 @@
-<?php require 'header.php';?>
+<?php require 'pages/header.php';?>
 	
 	<div class="container-fluid">
 		<div class="jumbotron">
@@ -15,5 +15,4 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+<?php require 'pages/footer.php'?>
