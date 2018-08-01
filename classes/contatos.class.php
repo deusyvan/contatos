@@ -4,7 +4,8 @@ class Contatos{
     public function getMeusContatos(){
         global $pdo;
         $array = array();
-        $sql = $pdo->prepare("SELECT * FROM contatos where id_usuario  = :id_usuario");
+        $sql = $pdo->prepare("SELECT * FROM contatos where id_usuario  = :id_usuario 
+                                AND id_status BETWEEN 2 AND 11 OR id_usuario  = :id_usuario AND id_status is null");
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->execute();
         
@@ -36,6 +37,13 @@ class Contatos{
         $sql->bindValue(":id_grupo", $grupo);
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->bindValue(":id_status", $status);
+        $sql->execute();
+    }
+    
+    public function inabilitarContato($id){
+        global $pdo;
+        $sql = $pdo->prepare("UPDATE contatos SET nome = CONCAT(id," - ",nome), id_status = '1' WHERE id = :id");
+        $sql->bindValue(":id", $id);
         $sql->execute();
     }
 }
