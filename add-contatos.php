@@ -6,6 +6,23 @@ if(empty($_SESSION['cLogin'])) {
     <?php 
     exit;
 }
+
+require 'classes/contatos.class.php';
+$c = new Contatos();
+if (isset($_POST['nome']) && !empty($_POST['nome'])){
+    $nome = addslashes($_POST['nome']);
+    $grupo = addslashes($_POST['grupo']);
+    $email = addslashes($_POST['email']);
+    $celular = addslashes($_POST['celular']);
+    $residencial = addslashes($_POST['residencial']);
+    $endereco = addslashes($_POST['endereco']);
+    $status = addslashes($_POST['status']);
+    
+    $c->addContato($grupo, $nome, $email, $celular,$residencial, $endereco, $status);
+    ?>
+   <div class="alert alert-success">Contato adicionado com sucesso!</div>
+   <?php 
+}
 ?>
 <div class="container">
 	<h1>Meus Contatos - Adicionar Contato</h1>
@@ -36,16 +53,6 @@ if(empty($_SESSION['cLogin'])) {
 			<input type="text" name="celular" id="celular" class="form-control" />
 		</div>
 		<div class="form-group">
-			<label for="residencial">Residencial: </label>
-			<input type="text" name="residencial" id="residencial" class="form-control" />
-		</div>
-		
-		<div class="form-group">
-			<label for="endereco">Endereço: </label>
-			<textarea name="endereco" id="endereco" class="form-control" ></textarea>
-		</div>
-		
-		<div class="form-group">
 			<label for="status">Status: </label>
 			<select name="status" id="status" class="form-control">
 				<?php 
@@ -58,7 +65,14 @@ if(empty($_SESSION['cLogin'])) {
 				<?php endforeach;?>
 			</select>
 		</div>
-		
+		<div class="form-group">
+			<label for="residencial">Residencial: </label>
+			<input type="text" name="residencial" id="residencial" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="endereco">Endereço: </label>
+			<textarea name="endereco" id="endereco" class="form-control" ></textarea>
+		</div>
 		
 		<input type="submit" value="Adicionar" class="btn btn-default">
 	</form>

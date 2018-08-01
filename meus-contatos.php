@@ -34,8 +34,8 @@ if (empty($_SESSION['cLogin'])){
 			<tr>
 				<td><?php echo $contato['nome']; ?></td>
 				<td><?php echo $contato['endereco']; ?></td>
-				<td><?php echo $contato['email']; ?></td>
-				<td><?php echo $contato['celular']; ?></td>	
+				<td><?php echo $contato['email1']; ?></td>
+				<td><?php echo $contato['mobile']; ?></td>	
 				<td></td>	
 			</tr>
 			<?php endforeach; ?>
