@@ -18,4 +18,24 @@ class Mensagens{
         
         return $array;
     }
+    
+    public function addMsg($titulo, $categoria, $descricao, $status,$data_envio){
+       global $pdo;
+       
+       $sql = $pdo->prepare("INSERT INTO mensagens 
+            SET id_usuario = :id_usuario, 
+                id_categoria = :id_categoria, 
+                titulo = :titulo,
+                descricao = :descricao,
+                id_status = :id_status,
+                data_criacao = now(),
+                data_envio = :data_envio");
+       $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
+       $sql->bindValue(":id_categoria", $categoria);
+       $sql->bindValue(":titulo", $titulo);
+       $sql->bindValue(":descricao", $descricao);
+       $sql->bindValue(":id_status", $status);
+       $sql->bindValue(":data_envio", $data_envio);
+       $sql->execute();
+    }
 }

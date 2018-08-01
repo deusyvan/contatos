@@ -6,6 +6,21 @@ if(empty($_SESSION['cLogin'])) {
     <?php 
     exit;
 }
+
+require 'classes/mensagens.class.php';
+$m = new Mensagens();
+if (isset($_POST['titulo']) && !empty($_POST['titulo'])){
+   $titulo = addslashes($_POST['titulo']);
+   $categoria = addslashes($_POST['categoria']);
+   $descricao = addslashes($_POST['descricao']);
+   $status = addslashes($_POST['status']);
+   $data_envio = addslashes($_POST['data_envio']);
+   
+   $m->addMsg($titulo, $categoria, $descricao, $status,$data_envio);
+   ?>
+   <div class="alert alert-success">Mensagem adicionada com sucesso!</div>
+   <?php 
+}
 ?>
 <div class="container">
 	<h1>Minhas Mensagens - Adicionar Mensagem</h1>

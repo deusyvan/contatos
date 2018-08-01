@@ -35,7 +35,7 @@ if (empty($_SESSION['cLogin'])){
 				<td><img src="assets/images/mensagens/<?php echo $mensagem['url']; ?>" border="0"/></td>
 				<td><?php echo $mensagem['titulo']; ?></td>
 				<td><?php echo $mensagem['descricao']; ?></td>
-				<td><?php echo $mensagem['status']; ?></td>
+				<td><?php echo $mensagem['id_status']; ?></td>
 				<td><?php echo $mensagem['data_envio']; ?></td>	
 				<td></td>	
 			</tr>
