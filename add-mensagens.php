@@ -34,9 +34,14 @@ if(empty($_SESSION['cLogin'])) {
 		<div class="form-group">
 			<label for="status">Status: </label>
 			<select name="status" id="status" class="form-control">
-				<option value="0">Ruim</option>
-				<option value="1">Bom</option>
-				<option value="2">Ótimo</option>
+				<?php 
+				require 'classes/status.class.php';
+				$s = new Status();
+				$status = $s->getLista();
+				foreach ($status as $state):
+				?>
+				<option value="<?php echo $state['id'];?>"><?php echo $state['nome_status']; ?></option>
+				<?php endforeach;?>
 			</select>
 		</div>
 		<div class="form-group">
