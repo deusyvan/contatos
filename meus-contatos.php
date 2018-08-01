@@ -36,7 +36,10 @@ if (empty($_SESSION['cLogin'])){
 				<td><?php echo $contato['endereco']; ?></td>
 				<td><?php echo $contato['email1']; ?></td>
 				<td><?php echo $contato['mobile']; ?></td>	
-				<td></td>	
+				<td>
+					<a href="editar-contato.php?id=<?php echo $contato['id']; ?>" class="btn btn-default">Editar</a>
+					<a href="excluir-contato.php?id=<?php echo $contato['id']; ?>" class="btn btn-danger">Excluir</a>
+				</td>	
 			</tr>
 			<?php endforeach; ?>
 		

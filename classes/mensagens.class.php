@@ -38,4 +38,16 @@ class Mensagens{
        $sql->bindValue(":data_envio", $data_envio);
        $sql->execute();
     }
+    
+    public function excluirMensagem($id){
+        global $pdo;
+        
+        $sql = $pdo->prepare("DELETE FROM mensagens_imagens WHERE id_mensagem = :id_mensagem");
+        $sql->bindValue(":id_mensagem", $id);
+        $sql->execute();
+        
+        $sql = $pdo->prepare("DELETE FROM mensagens WHERE id = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+    }
 }

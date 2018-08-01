@@ -32,12 +32,21 @@ if (empty($_SESSION['cLogin'])){
 			foreach ($mensagens as $mensagem):			
 			?>
 			<tr>
-				<td><img src="assets/images/mensagens/<?php echo $mensagem['url']; ?>" border="0"/></td>
+				<td>
+					<?php if (!empty($mensagem['url'])): ?>
+					<img src="assets/images/mensagens/<?php echo $mensagem['url']; ?>" height="50" border="0"/>
+					<?php else: ?>
+					<img src="assets/images/default.jpg" height="50" border="0"/>
+					<?php endif; ?>
+				</td>
 				<td><?php echo $mensagem['titulo']; ?></td>
 				<td><?php echo $mensagem['descricao']; ?></td>
 				<td><?php echo $mensagem['id_status']; ?></td>
 				<td><?php echo $mensagem['data_envio']; ?></td>	
-				<td></td>	
+				<td>
+					<a href="editar-mensagem.php?id=<?php echo $mensagem['id']; ?>" class="btn btn-default">Editar</a>
+					<a href="excluir-mensagem.php?id=<?php echo $mensagem['id']; ?>" class="btn btn-danger">Excluir</a>
+				</td>	
 			</tr>
 			<?php endforeach; ?>
 		
