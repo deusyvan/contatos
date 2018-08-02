@@ -1,13 +1,13 @@
 <?php require 'pages/header.php';
 	if ($_SESSION['cPerfil'] == 3){
-?>
-    <div class="col-sm-10">
-      <script> 
-      	swal("Ops!","Você ainda não foi autorizado pelo Administrador!","error");
-      </script>
- 	</div>
-<?php
-  }
+    ?>
+        <div class="col-sm-10">
+          <script> 
+          	swal("Ops!","Você ainda não foi autorizado pelo Administrador!","error");
+          </script>
+     	</div>
+    <?php
+	} else {
 ?>
 	<div class="container-fluid">
 		<div class="jumbotron">
@@ -24,4 +24,9 @@
 			</div>
 		</div>
 	</div>
-<?php require 'pages/footer.php'?>
+<?php 
+	}
+	
+require 'pages/footer.php';
+
+?>
