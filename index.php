@@ -1,5 +1,14 @@
-<?php require 'pages/header.php';?>
-	
+<?php require 'pages/header.php';
+	if ($_SESSION['cPerfil'] == 3){
+?>
+    <div class="col-sm-10">
+      <script> 
+      	swal("Ops!","Você ainda não foi autorizado pelo Administrador!","error");
+      </script>
+ 	</div>
+<?php
+  }
+?>
 	<div class="container-fluid">
 		<div class="jumbotron">
 			<h2>Bem vindo a Agenda Eletrônica</h2>

@@ -66,7 +66,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])){
 			</select>
 		</div>
 		<div class="form-group">
-			<label for="residencial">Residencial: </label>
+			<label for="residencial">Telefone Residencial: </label>
 			<input type="text" name="residencial" id="residencial" class="form-control" />
 		</div>
 		<div class="form-group">

@@ -9,13 +9,17 @@
         $senha = $_POST['senha'];
        
         if($u->login($email, $senha)){
+            if ($_SESSION['cPerfil'] == 3){
+                header("Location: ./sair.php");
+            }
+            
             ?>
             <script type="text/javascript">window.location.href="./";</script>
             <?php 
         } else {
             ?>
             <div class="alert alert-danger">
-               	Usuário e/ou Senha errados!
+               	Usuário e/ou Senha errados!<br/>
             </div>
             <?php
         }

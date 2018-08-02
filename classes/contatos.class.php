@@ -41,9 +41,22 @@ class Contatos{
     }
     
     public function inabilitarContato($id){
+        $nome = "";
         global $pdo;
-        $sql = $pdo->prepare("UPDATE contatos SET nome = CONCAT(id," - ",nome), id_status = '1' WHERE id = :id");
+        $sql = $pdo->prepare("SELECT nome FROM contatos WHERE id = :id AND nome LIKE '".$id."%'");
         $sql->bindValue(":id", $id);
         $sql->execute();
+        $nome = $sql->fetch();
+        
+        if (!empty($nome)){
+            $sql = $pdo->prepare("UPDATE contatos SET id_status = '1' WHERE id = :id");
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+        } else {
+            $sql = $pdo->prepare("UPDATE contatos SET nome = CONCAT(".$id.",' - ',nome), id_status = '1' WHERE id = :id");
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+        }
+        
     }
 }

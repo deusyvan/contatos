@@ -23,7 +23,7 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])){
 }
 ?>
 <div class="container">
-	<h1>Minhas Mensagens - Adicionar Mensagem</h1>
+	<h1>Mensagens - Adicionar Mensagem</h1>
 	<form method="POST" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="categoria">Categoria: </label>

@@ -4,9 +4,11 @@
 	<title>Contatos</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="assets/css/style.css" />
+	<link rel="stylesheet" href="assets/css/sweetalert.css" />
 	<script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/script.js"></script>
+	<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -18,7 +20,7 @@
 				<?php if (isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])):?>
     				<li><a href="#">Usuário: <?php echo $_SESSION['cNome']; ?></a></li>
     				<li><a href="meus-contatos.php">Meus Contatos</a></li>
-    				<li><a href="minhas-mensagens.php">Minhas Mensagens</a></li>
+    				<li><a href="minhas-mensagens.php">Mensagens</a></li>
     				<li><a href="sair.php">Sair</a></li>
     			<?php  else:?>
         			<li><a href="cadastre-se.php">Cadastre-se</a></li>

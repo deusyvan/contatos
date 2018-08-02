@@ -27,15 +27,16 @@ class Usuarios {
        
         global $pdo;
         
-        $sql = $pdo->prepare("SELECT id,nome FROM usuarios WHERE email = :email AND senha = :senha");
+        $sql = $pdo->prepare("SELECT id,nome,perfil FROM usuarios WHERE email = :email AND senha = :senha");
         $sql->bindValue(":email", $email);
         $sql->bindValue(":senha", md5($senha));
         $sql->execute();
+        $dado = $sql->fetch();
         
-        if($sql->rowCount() > 0){
-            $dado = $sql->fetch();
+        if($sql->rowCount() > 0 && $dado['perfil'] <=3){
             $_SESSION['cLogin'] = $dado['id'];
             $_SESSION['cNome'] = $dado['nome'];
+            $_SESSION['cPerfil'] = $dado['perfil'];
             return TRUE;
         } else {
             return FALSE;
