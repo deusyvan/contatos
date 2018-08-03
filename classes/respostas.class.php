@@ -17,14 +17,13 @@ class Respostas{
     
     public function addResp($mensagem, $lista, $status){
         $str = preg_replace('/[^\d\,]/', '',$lista);
+        $str2 = str_replace(",", ", ", $str);
         
      try {   
            global $pdo;
             
-           $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str.")");
+           $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.")");
            $sql->execute();
-           
-     
           
            $sql = $pdo->prepare("INSERT INTO respostas 
                     SET id_mensagem = :id_mensagem, 
@@ -33,7 +32,7 @@ class Respostas{
                         id_usuario = :id_usuario");
                
            $sql->bindValue(":id_mensagem", $mensagem);
-           $sql->bindValue(":lista_contatos_id", $str);
+           $sql->bindValue(":lista_contatos_id", $str2);
            $sql->bindValue(":id_status", $status);
            $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
            $sql->execute();
@@ -47,7 +46,7 @@ class Respostas{
             <?php
            
      } catch (Error $e) {
-         echo "Falhou: ".$e->getMessage();
+         echo "Falha na listagem de Contatos: ".$e->getMessage()." - Verifique vírgulas, pontos, espaços entre outros!"
                ?>
                  <div class="col-sm-10">
                     <script> 

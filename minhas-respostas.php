@@ -35,7 +35,7 @@ if (empty($_SESSION['cLogin'])){
 				<td><?php echo $resposta['lista_contatos_id']; ?></td>
 				<td><?php echo $resposta['id_status']; ?></td>
 				<td><?php echo $resposta['data_envio']; ?></td>	
-				<td>
+				<td nowrap="nowrap">
 					<a href="editar-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-default">Editar</a>
 					<a href="excluir-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-danger">Excluir</a>
 				</td>	
