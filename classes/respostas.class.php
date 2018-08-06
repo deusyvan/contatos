@@ -15,47 +15,105 @@ class Respostas{
         return $array;
     }
     
+    public function getResposta($id){
+        $array = array();
+        global $pdo;
+        $sql = $pdo->prepare("SELECT * FROM respostas WHERE id = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        }
+        
+        return $array;
+    }
+    
     public function addResp($mensagem, $lista, $status){
         $str = preg_replace('/[^\d\,]/', '',$lista);
         $str2 = str_replace(",", ", ", $str);
         
-     try {   
-           global $pdo;
-            
-           $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.")");
-           $sql->execute();
-          
-           $sql = $pdo->prepare("INSERT INTO respostas 
-                    SET id_mensagem = :id_mensagem, 
-                        lista_contatos_id = :lista_contatos_id, 
-                        id_status = :id_status,
-                        id_usuario = :id_usuario");
-               
-           $sql->bindValue(":id_mensagem", $mensagem);
-           $sql->bindValue(":lista_contatos_id", $str2);
-           $sql->bindValue(":id_status", $status);
-           $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
-           $sql->execute();
-       
-            ?>
-              <div class="col-sm-10">
-                 <script> 
-                   swal("Beleza","Sua lista foi crida com sucesso, agora aguarde o envio, pode acompanhar pelo status. Bom Trabalho!","success");
-                 </script>
-              </div>
-            <?php
+         try {   
+               global $pdo;
+                
+               $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.")");
+               $sql->execute();
+              
+               $sql = $pdo->prepare("INSERT INTO respostas 
+                        SET id_mensagem = :id_mensagem, 
+                            lista_contatos_id = :lista_contatos_id, 
+                            id_status = :id_status,
+                            id_usuario = :id_usuario");
+                   
+               $sql->bindValue(":id_mensagem", $mensagem);
+               $sql->bindValue(":lista_contatos_id", $str2);
+               $sql->bindValue(":id_status", $status);
+               $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
+               $sql->execute();
            
-     } catch (Error $e) {
-         echo "Falha na listagem de Contatos: ".$e->getMessage()." - Verifique vírgulas, pontos, espaços entre outros!"
-               ?>
-                 <div class="col-sm-10">
-                    <script> 
-                      swal("Ops!","Ocorreu um erro na sua lista, confira novamente ou chame o Administrador!","error");
-                    </script>
-                 </div>
+                ?>
+                  <div class="col-sm-10">
+                     <script> 
+                       swal("Beleza","Sua lista foi crida com sucesso, agora aguarde o envio, pode acompanhar pelo status. Bom Trabalho!","success");
+                     </script>
+                  </div>
                 <?php
-                exit;
-           }
+               
+         } catch (Error $e) {
+             echo "Falha na listagem de Contatos: ".$e->getMessage()." - Verifique vírgulas, pontos, espaços entre outros!"
+                   ?>
+                     <div class="col-sm-10">
+                        <script> 
+                          swal("Ops!","Ocorreu um erro na sua lista, confira novamente ou chame o Administrador!","error");
+                        </script>
+                     </div>
+                    <?php
+                    exit;
+         }
+    }
+    
+    public function editResp($mensagem, $lista, $status, $id){
+        $str = preg_replace('/[^\d\,]/', '',$lista);
+        $str2 = str_replace(",", ", ", $str);
+        
+        try {
+            global $pdo;
+            
+            $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.")");
+            $sql->execute();
+            
+            $sql = $pdo->prepare("UPDATE respostas
+                        SET id_mensagem = :id_mensagem,
+                            lista_contatos_id = :lista_contatos_id,
+                            id_status = :id_status,
+                            id_usuario = :id_usuario WHERE id = :id AND id_status BETWEEN 2 AND 11");
+            
+            $sql->bindValue(":id_mensagem", $mensagem);
+            $sql->bindValue(":lista_contatos_id", $str2);
+            $sql->bindValue(":id_status", $status);
+            $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+            
+            ?>
+                  <div class="col-sm-10">
+                     <script> 
+                       swal("Beleza","Sua lista foi alterada com sucesso, agora aguarde o envio, pode acompanhar pelo status. Bom Trabalho!","success");
+                     </script>
+                  </div>
+                <?php
+               
+         } catch (Error $e) {
+             echo "Falha na listagem de Contatos: ".$e->getMessage()." - Verifique vírgulas, pontos, espaços entre outros!"
+                   ?>
+                     <div class="col-sm-10">
+                        <script> 
+                          swal("Ops!","Ocorreu um erro na sua lista, confira novamente ou chame o Administrador!","error");
+                        </script>
+                     </div>
+                    <?php
+                    exit;
+         }
     }
     
     public function inabilitarResposta($id){

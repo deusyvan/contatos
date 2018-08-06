@@ -46,10 +46,7 @@ if (isset($_POST['lista']) && !empty($_POST['lista'])){
 				<option value="7" selected="selected">Pendente</option>
 			</select>
 		</div>
-		<div class="form-group">
-			<label for="data_envio">Data envio: </label>
-			<input type="text" name="data_envio" id="data_envio" class="form-control" disabled="disabled" />
-		</div>
+		
 		<input type="submit" value="Adicionar" class="btn btn-default">
 	</form>
 </div>
