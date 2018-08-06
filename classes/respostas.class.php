@@ -4,7 +4,7 @@ class Respostas{
     public function getRespostas(){
         global $pdo;
         $array = array();
-        $sql = $pdo->prepare("SELECT * FROM respostas WHERE id_usuario  = :id_usuario");
+        $sql = $pdo->prepare("SELECT * FROM respostas WHERE id_usuario  = :id_usuario AND id_status BETWEEN 2 AND 11 OR id_status is null ");
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->execute();
         
@@ -58,10 +58,9 @@ class Respostas{
            }
     }
     
-    public function inabilitarMensagem($id){
+    public function inabilitarResposta($id){
         global $pdo;
-        
-        $sql = $pdo->prepare("UPDATE mensagens SET id_status = '1' WHERE id = :id");
+        $sql = $pdo->prepare("UPDATE respostas SET id_status = '1' WHERE id = :id");
         $sql->bindValue(":id", $id);
         $sql->execute();
     }

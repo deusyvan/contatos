@@ -5,12 +5,12 @@ if (empty($_SESSION['cLogin'])){
     exit;
 }
 
-require 'classes/mensagens.class.php';
-$m = new Mensagens();
+require 'classes/respostas.class.php';
+$r = new Respostas();
 
 if (isset($_GET['id']) && !empty($_GET['id'])){
-    $m->inabilitarMensagem($_GET['id']);
+    $r->inabilitarResposta($_GET['id']);
 }
 
-header("Location: minhas-mensagens.php");
+header("Location: minhas-respostas.php");
  
