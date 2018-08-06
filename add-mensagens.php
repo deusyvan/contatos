@@ -13,10 +13,10 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])){
    $titulo = addslashes($_POST['titulo']);
    $categoria = addslashes($_POST['categoria']);
    $descricao = addslashes($_POST['descricao']);
-   $status = addslashes($_POST['status']);
-   $data_envio = addslashes($_POST['data_envio']);
+   /* $status = addslashes($_POST['status']); */
+   $status = 7;
    
-   $m->addMsg($titulo, $categoria, $descricao, $status,$data_envio);
+   $m->addMsg($titulo, $categoria, $descricao, $status);
    ?>
    <div class="alert alert-success">Mensagem adicionada com sucesso!</div>
    <?php 
@@ -48,7 +48,8 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])){
 		</div>
 		<div class="form-group">
 			<label for="status">Status: </label>
-			<select name="status" id="status" class="form-control">
+			<select name="status" id="status" class="form-control" disabled="disabled">
+				<option value="7" selected="selected">Pendente</option>
 				<?php 
 				require 'classes/status.class.php';
 				$s = new Status();
@@ -59,11 +60,7 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])){
 				<?php endforeach;?>
 			</select>
 		</div>
-		<div class="form-group">
-			<label for="data_envio">Data envio: </label>
-			<input type="text" name="data_envio" id="data_envio" class="form-control" />
-		</div>
-
+		
 		<input type="submit" value="Adicionar" class="btn btn-default">
 	</form>
 </div>

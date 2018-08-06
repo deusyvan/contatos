@@ -21,7 +21,7 @@ if (empty($_SESSION['cLogin'])){
 					<th>Título</th>
 					<th>Descrição</th>
 					<th>Status</th>
-					<th>Data</th>
+					<th>Data Criação</th>
 					<th>Ações</th>
 				</tr>
 			</thead>

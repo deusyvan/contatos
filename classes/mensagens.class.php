@@ -20,7 +20,7 @@ class Mensagens{
         return $array;
     }
     
-    public function addMsg($titulo, $categoria, $descricao, $status,$data_envio){
+    public function addMsg($titulo, $categoria, $descricao, $status){
        global $pdo;
        
        $sql = $pdo->prepare("INSERT INTO mensagens 
