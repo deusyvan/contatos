@@ -16,6 +16,20 @@ class Contatos{
         return $array;
     }
     
+    public function getContato($id){
+        $array = array();
+        global $pdo;
+        $sql = $pdo->prepare("SELECT * FROM contatos WHERE id = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        }
+        
+        return $array;
+    }
+    
     public function addContato($grupo, $nome, $email, $celular,$residencial, $endereco, $status){
         global $pdo;
         
@@ -37,6 +51,46 @@ class Contatos{
         $sql->bindValue(":id_grupo", $grupo);
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->bindValue(":id_status", $status);
+        $sql->execute();
+    }
+    
+    public function editContato($grupo, $nome, $email, $celular,$residencial,$endereco, $status, $genero, $email2, $email3, 
+                                $fone, $id_graduacao, $id_om, $id_cidade, $id){
+        global $pdo;
+        
+        $sql = $pdo->prepare("UPDATE contatos
+            SET 
+                id_grupo = :id_grupo,
+                nome = :nome,
+                email1 = :email,
+                mobile = :celular,
+                pager = :residencial,
+                endereco = :endereco,
+                id_status = :id_status,
+                genero = :genero,
+                email2 = :email2,
+                email3 = :email3,
+                outro_fone = :fone,
+                id_graduacao = :id_graduacao,
+                id_om = :id_om,
+                id_cidade = :id_cidade,
+                id_usuario = :id_usuario WHERE id = :id");
+        $sql->bindValue(":id_grupo", $grupo);
+        $sql->bindValue(":nome", $nome);
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":genero", $genero);
+        $sql->bindValue(":endereco", $endereco);
+        $sql->bindValue(":email2", $email2);
+        $sql->bindValue(":email3", $email3);
+        $sql->bindValue(":celular", $celular);
+        $sql->bindValue(":residencial", $residencial);
+        $sql->bindValue(":fone", $fone);
+        $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
+        $sql->bindValue(":id_status", $status);
+        $sql->bindValue(":id_graduacao", $id_graduacao);
+        $sql->bindValue(":id_om", $id_om);
+        $sql->bindValue(":id_cidade", $id_cidade);
+        $sql->bindValue(":id", $id);
         $sql->execute();
     }
     
