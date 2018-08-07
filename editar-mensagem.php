@@ -13,9 +13,15 @@ if (isset($_POST['titulo']) && !empty($_POST['titulo'])){
    $titulo = addslashes($_POST['titulo']);
    $categoria = addslashes($_POST['categoria']);
    $descricao = addslashes($_POST['descricao']);
-   $status = addslashes($_POST['status']); 
+   $status = addslashes($_POST['status']);
    
-   $m->editMsg($titulo, $categoria, $descricao, $status,$_GET['id']);
+   if (isset($_FILES['fotos'])){
+       $fotos = $_FILES['fotos'];
+   } else {
+       $fotos = array();
+   }
+   
+   $m->editMsg($titulo, $categoria, $descricao, $status, $fotos, $_GET['id']);
    ?>
    <div class="alert alert-success">Mensagem Alterada com sucesso!</div>
    <?php 
@@ -70,6 +76,24 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 				><?php echo $state['nome_status']; ?></option>
 				<?php endforeach;?>
 			</select>
+		</div>
+		
+		<div class="form-group">
+			<label for="add_foto">Imagens/Fotos:</label>
+			<input type="file" name="fotos[]" multiple /><br/>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">Imagens e Fotos para a Mensagem</div>
+				<div class="panel-body">
+					<!-- Percorrer o array para criar as diversas div com suas fotos e botao de excluir -->
+					<?php foreach ($info['fotos'] as $foto):?>
+						<div class="foto_item">
+							<img src="assets/images/mensagens/<?php echo $foto['url']; ?>" class="img-thumbnail" border="0" /><br/>
+							<a href="excluir-foto.php?id=<?php echo $foto['id']; ?>" class="btn btn-default">Excluir Imagem</a>
+						</div>
+					<?php endforeach;?>
+				</div>
+			</div>
 		</div>
 		
 		<input type="submit" value="Salvar" class="btn btn-default">
