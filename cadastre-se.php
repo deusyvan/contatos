@@ -9,9 +9,10 @@
 	       $email = addslashes($_POST['email']);
 	       $senha = $_POST['senha'];
 	       $telefone = addslashes($_POST['telefone']);
+	       $perfil = 3;
 	       
 	       if(!empty($nome) && !empty($email) && !empty($senha)){
-	           if($u->cadastrar($nome, $email, $senha, $telefone)){
+	           if($u->cadastrar($nome, $email, $senha, $telefone, $perfil)){
 	               ?>
                     <div class="alert alert-success">
                     	<strong>Parabéns! </strong> Cadastrado com sucesso. 

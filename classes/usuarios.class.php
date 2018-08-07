@@ -1,18 +1,19 @@
 <?php
 class Usuarios {
     
-    public function cadastrar($nome, $email,$senha, $telefone){
+    public function cadastrar($nome, $email,$senha, $telefone, $perfil){
         global $pdo;
         $sql = $pdo->prepare("SELECT id FROM usuarios WHERE email = :email");
         $sql->bindValue(":email", $email);
         $sql->execute();
         
         if ($sql->rowCount() == 0) {
-            $sql = $pdo->prepare("INSERT INTO usuarios SET nome = :nome, email = :email, senha = :senha, telefone = :telefone");
+            $sql = $pdo->prepare("INSERT INTO usuarios SET nome = :nome, email = :email, senha = :senha, telefone = :telefone, perfil = :perfil");
             $sql->bindValue(":nome", $nome);
             $sql->bindValue(":email", $email);
             $sql->bindValue(":senha", md5($senha));
             $sql->bindValue(":telefone", $telefone);
+            $sql->bindValue(":perfil", $perfil);
             $sql->execute();
             
             return true;
