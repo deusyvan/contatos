@@ -12,7 +12,6 @@
             if ($_SESSION['cPerfil'] == 3){
                 header("Location: ./sair.php");
             }
-            
             ?>
             <script type="text/javascript">window.location.href="./";</script>
             <?php 

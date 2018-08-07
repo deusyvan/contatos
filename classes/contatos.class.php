@@ -5,7 +5,7 @@ class Contatos{
         global $pdo;
         $array = array();
         $sql = $pdo->prepare("SELECT * FROM contatos where id_usuario  = :id_usuario 
-                                AND id_status BETWEEN 2 AND 11 OR id_usuario  = :id_usuario AND id_status is null");
+                                AND id_status BETWEEN 2 AND 13 OR id_usuario  = :id_usuario AND id_status is null");
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->execute();
         
@@ -92,6 +92,22 @@ class Contatos{
         $sql->bindValue(":id_cidade", $id_cidade);
         $sql->bindValue(":id", $id);
         $sql->execute();
+        
+        $nome = "";
+        $sql = $pdo->prepare("SELECT nome FROM contatos WHERE id = :id AND nome LIKE '".$id."%'");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+        $nome = $sql->fetch();
+        
+        if (!empty($nome)){
+            $sql = $pdo->prepare("UPDATE contatos SET id_status = '12' WHERE id = :id");
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+        } else {
+            $sql = $pdo->prepare("UPDATE contatos SET nome = CONCAT(".$id.",' - ',nome), id_status = '12' WHERE id = :id");
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+        }
     }
     
     public function inabilitarContato($id){

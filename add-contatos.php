@@ -16,7 +16,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])){
     $celular = addslashes($_POST['celular']);
     $residencial = addslashes($_POST['residencial']);
     $endereco = addslashes($_POST['endereco']);
-    $status = addslashes($_POST['status']);
+    $status = 13;
     
     $c->addContato($grupo, $nome, $email, $celular,$residencial, $endereco, $status);
     ?>
@@ -54,7 +54,8 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])){
 		</div>
 		<div class="form-group">
 			<label for="status">Status: </label>
-			<select name="status" id="status" class="form-control">
+			<select name="status" id="status" class="form-control" disabled="disabled">
+				<option value="13" selected="selected">Cadastro On-Line</option>
 				<?php 
 				require 'classes/status.class.php';
 				$s = new Status();
