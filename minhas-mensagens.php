@@ -43,7 +43,7 @@ if (empty($_SESSION['cLogin'])){
 				<td><?php echo $mensagem['id']; ?></td>
 				<td><?php echo $mensagem['titulo']; ?></td>
 				<td><?php echo $mensagem['descricao']; ?></td>
-				<td><?php echo $mensagem['id_status']; ?></td>
+				<td><?php echo $mensagem['status']; ?></td>
 				<td><?php echo $mensagem['data_criacao']; ?></td>	
 				<td>
 					<a href="editar-mensagem.php?id=<?php echo $mensagem['id']; ?>" class="btn btn-default">Editar</a>

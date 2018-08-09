@@ -7,7 +7,8 @@ class Mensagens{
         $sql = $pdo->prepare("SELECT *, 
             (select mensagens_imagens.url 
              from mensagens_imagens 
-             where mensagens_imagens.id_mensagem = mensagens.id limit 1) as url 
+             where mensagens_imagens.id_mensagem = mensagens.id limit 1) as url,
+                (select status.nome_status from status where status.id = mensagens.id_status) as status 
             FROM mensagens where id_status BETWEEN 2 AND 11 OR id_status is null");
         
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);

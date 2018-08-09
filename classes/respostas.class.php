@@ -4,7 +4,9 @@ class Respostas{
     public function getRespostas(){
         global $pdo;
         $array = array();
-        $sql = $pdo->prepare("SELECT * FROM respostas WHERE id_usuario  = :id_usuario AND id_status BETWEEN 2 AND 11 OR id_status is null ");
+        $sql = $pdo->prepare("SELECT *,
+                (select status.nome_status from status where status.id = respostas.id_status) as status
+                 FROM respostas WHERE id_usuario  = :id_usuario AND id_status BETWEEN 2 AND 11 OR id_status is null ");
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->execute();
         
