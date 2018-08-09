@@ -4,7 +4,7 @@ class Contatos{
     public function getMeusContatos(){
         global $pdo;
         $array = array();
-        $sql = $pdo->prepare("SELECT * FROM contatos where id_usuario  = :id_usuario 
+        $sql = $pdo->prepare("SELECT *,(select status.nome_status from status where status.id = contatos.id_status) as status FROM contatos where id_usuario  = :id_usuario 
                                 AND id_status BETWEEN 2 AND 13 OR id_usuario  = :id_usuario AND id_status is null");
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->execute();
