@@ -100,13 +100,20 @@ class Contatos{
         $nome = $sql->fetch();
         
         if (!empty($nome)){
-            $sql = $pdo->prepare("UPDATE contatos SET id_status = '12' WHERE id = :id");
-            $sql->bindValue(":id", $id);
-            $sql->execute();
+            if($status == 13){
+                $sql = $pdo->prepare("UPDATE contatos SET id_status = '12' WHERE id = :id");
+                $sql->bindValue(":id", $id);
+                $sql->execute();
+            }
         } else {
-            $sql = $pdo->prepare("UPDATE contatos SET nome = CONCAT(".$id.",' - ',nome), id_status = '12' WHERE id = :id");
+            $sql = $pdo->prepare("UPDATE contatos SET nome = CONCAT(".$id.",' - ',nome) WHERE id = :id");
             $sql->bindValue(":id", $id);
             $sql->execute();
+            if($status == 13){
+                $sql = $pdo->prepare("UPDATE contatos SET id_status = '12' WHERE id = :id");
+                $sql->bindValue(":id", $id);
+                $sql->execute();
+            }
         }
     }
     
