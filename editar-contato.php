@@ -17,16 +17,16 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])){
     $residencial = addslashes($_POST['residencial']);
     $endereco = addslashes($_POST['endereco']);
     $status = addslashes($_POST['status']);
-    $genero = addslashes($_POST['genero']);
+    $sexo = addslashes($_POST['sexo']);
     $email2 = addslashes($_POST['email2']);
-    $email3 = addslashes($_POST['email3']);
+    $ddd = addslashes($_POST['ddd']);
     $fone = addslashes($_POST['fone']);
-    $id_graduacao = addslashes($_POST['graduacao']);
+    $id_graduacao = addslashes($_POST['posto_graduacao']);
     $id_om = addslashes($_POST['om']);
     $id_cidade = addslashes($_POST['cidade']);
     
     $c->editContato($grupo, $nome, $email, $celular, $residencial, $endereco, $status, 
-        $genero, $email2, $email3, $fone, $id_graduacao, $id_om, $id_cidade, $_GET['id']);
+        $sexo, $email2, $ddd, $fone, $id_graduacao, $id_om, $id_cidade, $_GET['id']);
     ?>
    <div class="alert alert-success">Contato alterado com sucesso!</div>
    <?php 
@@ -72,16 +72,16 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 			<input type="text" name="email2" id="email2" class="form-control" value="<?php echo $info['email2']; ?>"/>
 		</div>
 		<div class="form-group">
-			<label for="email3">3º E-mail: </label>
-			<input type="text" name="email3" id="email3" class="form-control" value="<?php echo $info['email3']; ?>"/>
+			<label for="ddd">DDD: </label>
+			<input type="text" name="ddd" id="ddd" class="form-control" value="<?php echo $info['ddd']; ?>"/>
 		</div>
 		<div class="form-group">
 			<label for="celular">Celular: </label>
-			<input type="text" name="celular" id="celular" class="form-control" value="<?php echo $info['mobile']; ?>"/>
+			<input type="text" name="celular" id="celular" class="form-control" value="<?php echo $info['celular']; ?>"/>
 		</div>
 		<div class="form-group">
 			<label for="residencial">Telefone Residencial: </label>
-			<input type="text" name="residencial" id="residencial" class="form-control" value="<?php echo $info['pager']; ?>"/>
+			<input type="text" name="residencial" id="residencial" class="form-control" value="<?php echo $info['residencial']; ?>"/>
 		</div>
 		<div class="form-group">
 			<label for="fone">Outro Telefone: </label>
@@ -91,8 +91,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 			<label for="genero">Sexo: </label>
 			<select name="genero" id="genero" class="form-control">
 				<option></option>
-				<option value="0" <?php echo ($info['genero'] == '0')?'selected="selected"': '';?>>Feminino</option>
-				<option value="1" <?php echo ($info['genero'] == '1')?'selected="selected"': '';?>>Masculino</option>
+				<option value="0" <?php echo ($info['sexo'] == '0')?'selected="selected"': '';?>>Feminino</option>
+				<option value="1" <?php echo ($info['sexo'] == '1')?'selected="selected"': '';?>>Masculino</option>
 			</select>
 		</div>
 		<div class="form-group">

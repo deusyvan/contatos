@@ -20,6 +20,9 @@
 				<?php if (isset($_SESSION['cLogin']) && !empty($_SESSION['cLogin'])):?>
     				<li><a href="#">Usuário: <?php echo $_SESSION['cNome']; ?></a></li>
     				<li><a href="meus-contatos.php">Meus Contatos</a></li>
+    				<?php if (isset($_SESSION['cPerfil']) && $_SESSION['cPerfil'] == 1):?>
+    				<li><a href="contatos.php">Contatos</a></li>
+    				<?php endif; ?>
     				<li><a href="minhas-mensagens.php">Mensagens</a></li>
     				<li><a href="minhas-respostas.php">Minhas Respostas</a></li>
     				<li><a href="sair.php">Sair</a></li>

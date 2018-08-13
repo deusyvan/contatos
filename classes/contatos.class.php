@@ -17,6 +17,21 @@ class Contatos{
         
     }
     
+    public function getMeusContatos(){
+        global $pdo;
+        $array = array();
+        $sql = $pdo->query("SELECT *,(select status.nome_status from status where status.id = contatos.id_status) as status 
+                             FROM contatos order by id asc");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+        
+    }
+    
     public function getContato($id){
         $array = array();
         global $pdo;
