@@ -1,7 +1,7 @@
 <?php require 'pages/header.php'; ?>
 
 <?php 
-if (empty($_SESSION['cLogin'])){
+if (empty($_SESSION['cLogin']) || $_SESSION['cPerfil'] > 1){
     ?>
     <script type="text/javascript">window.location.href="login.php";</script>
     <?php 

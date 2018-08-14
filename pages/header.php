@@ -25,6 +25,9 @@
     				<?php endif; ?>
     				<li><a href="minhas-mensagens.php">Mensagens</a></li>
     				<li><a href="minhas-respostas.php">Minhas Respostas</a></li>
+    				<?php if (isset($_SESSION['cPerfil']) && $_SESSION['cPerfil'] == 1):?>
+    				<li><a href="respostas.php">Respostas</a></li>
+    				<?php endif; ?>
     				<li><a href="sair.php">Sair</a></li>
     			<?php  else:?>
         			<li><a href="cadastre-se.php">Cadastre-se</a></li>

@@ -17,7 +17,7 @@ class Contatos{
         
     }
     
-    public function getMeusContatos(){
+    public function getTodosContatos(){
         global $pdo;
         $array = array();
         $sql = $pdo->query("SELECT *,(select status.nome_status from status where status.id = contatos.id_status) as status 
@@ -46,15 +46,15 @@ class Contatos{
         return $array;
     }
     
-    public function addContato($grupo, $nome, $email, $celular,$residencial, $endereco, $status){
+    public function addContato($grupo, $nome, $email, $celular,$residencia, $endereco, $status){
         global $pdo;
         
         $sql = $pdo->prepare("INSERT INTO contatos
             SET nome = :nome,
                 endereco = :endereco,
                 email1 = :email,
-                mobile = :celular,
-                pager = :residencial,
+                celular = :celular,
+                residencia = :residencia,
                 id_grupo = :id_grupo,
                 id_usuario = :id_usuario,
                 id_status = :id_status");
@@ -63,15 +63,15 @@ class Contatos{
         $sql->bindValue(":endereco", $endereco);
         $sql->bindValue(":email", $email);
         $sql->bindValue(":celular", $celular);
-        $sql->bindValue(":residencial", $residencial);
+        $sql->bindValue(":residencia", $residencia);
         $sql->bindValue(":id_grupo", $grupo);
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->bindValue(":id_status", $status);
         $sql->execute();
     }
     
-    public function editContato($grupo, $nome, $email, $celular,$residencial,$endereco, $status, $genero, $email2, $email3, 
-                                $fone, $id_graduacao, $id_om, $id_cidade, $id){
+    public function editContato($grupo, $nome, $email, $celular,$residencia ,$endereco, $status, $sexo, $email2, $ddd, 
+                                $fone, $cidade, $bairro, $numero, $complemento, $id){
         global $pdo;
         
         $sql = $pdo->prepare("UPDATE contatos
@@ -79,33 +79,35 @@ class Contatos{
                 id_grupo = :id_grupo,
                 nome = :nome,
                 email1 = :email,
-                mobile = :celular,
-                pager = :residencial,
+                celular = :celular,
+                residencia = :residencia,
                 endereco = :endereco,
                 id_status = :id_status,
-                genero = :genero,
+                sexo = :sexo,
                 email2 = :email2,
-                email3 = :email3,
+                ddd = :ddd,
                 outro_fone = :fone,
-                id_graduacao = :id_graduacao,
-                id_om = :id_om,
-                id_cidade = :id_cidade,
+                cidade = :cidade,
+                bairro = :bairro,
+                numero = :numero,
+                complemento = :complemento,
                 id_usuario = :id_usuario WHERE id = :id");
         $sql->bindValue(":id_grupo", $grupo);
         $sql->bindValue(":nome", $nome);
         $sql->bindValue(":email", $email);
-        $sql->bindValue(":genero", $genero);
+        $sql->bindValue(":sexo", $sexo);
         $sql->bindValue(":endereco", $endereco);
         $sql->bindValue(":email2", $email2);
-        $sql->bindValue(":email3", $email3);
+        $sql->bindValue(":ddd", $ddd);
         $sql->bindValue(":celular", $celular);
-        $sql->bindValue(":residencial", $residencial);
+        $sql->bindValue(":residencia", $residencia);
         $sql->bindValue(":fone", $fone);
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->bindValue(":id_status", $status);
-        $sql->bindValue(":id_graduacao", $id_graduacao);
-        $sql->bindValue(":id_om", $id_om);
-        $sql->bindValue(":id_cidade", $id_cidade);
+        $sql->bindValue(":cidade", $cidade);
+        $sql->bindValue(":bairro", $bairro);
+        $sql->bindValue(":numero", $numero);
+        $sql->bindValue(":complemento", $complemento);
         $sql->bindValue(":id", $id);
         $sql->execute();
         

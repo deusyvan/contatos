@@ -66,7 +66,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
 				<?php endforeach;?>
 			</select>
 		</div>
-		
 		<input type="submit" value="Salvar" class="btn btn-default">
 	</form>
 </div>

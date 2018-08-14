@@ -46,6 +46,12 @@ if (isset($_POST['lista']) && !empty($_POST['lista'])){
 				<option value="7" selected="selected">Pendente</option>
 			</select>
 		</div>
+		<div class="form-group">
+			<label for="usuario">Usuário: </label>
+			<select name="usuario" id="usuario" class="form-control" disabled="disabled">
+				<option value="<?php echo $_SESSION['cLogin']; ?>" selected="selected"><?php echo $_SESSION['cNome']; ?></option>
+			</select>
+		</div>
 		
 		<input type="submit" value="Adicionar" class="btn btn-default">
 	</form>

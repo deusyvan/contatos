@@ -14,11 +14,11 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])){
     $grupo = addslashes($_POST['grupo']);
     $email = addslashes($_POST['email']);
     $celular = addslashes($_POST['celular']);
-    $residencial = addslashes($_POST['residencial']);
+    $residencia = addslashes($_POST['residencia']);
     $endereco = addslashes($_POST['endereco']);
     $status = 13;
     
-    $c->addContato($grupo, $nome, $email, $celular,$residencial, $endereco, $status);
+    $c->addContato($grupo, $nome, $email, $celular,$residencia, $endereco, $status);
     ?>
    <div class="alert alert-success">Contato adicionado com sucesso!</div>
    <?php 
@@ -67,8 +67,8 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])){
 			</select>
 		</div>
 		<div class="form-group">
-			<label for="residencial">Telefone Residencial: </label>
-			<input type="text" name="residencial" id="residencial" class="form-control" />
+			<label for="residencia">Telefone Residencial: </label>
+			<input type="text" name="residencia" id="residencia" class="form-control" />
 		</div>
 		<div class="form-group">
 			<label for="endereco">Endereço: </label>

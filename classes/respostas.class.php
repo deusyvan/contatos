@@ -17,6 +17,23 @@ class Respostas{
         return $array;
     }
     
+    public function getTodasRespostas(){
+        global $pdo;
+        $array = array();
+        $sql = $pdo->prepare("SELECT *,
+                (select status.nome_status from status where status.id = respostas.id_status) as status,
+                (select usuarios.nome from usuarios where usuarios.id = respostas.id_usuario) as usuario
+                 FROM respostas");
+        $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
+    
     public function getResposta($id){
         $array = array();
         global $pdo;
@@ -87,13 +104,12 @@ class Respostas{
             $sql = $pdo->prepare("UPDATE respostas
                         SET id_mensagem = :id_mensagem,
                             lista_contatos_id = :lista_contatos_id,
-                            id_status = :id_status,
-                            id_usuario = :id_usuario WHERE id = :id AND id_status BETWEEN 2 AND 11");
+                            id_status = :id_status
+                            WHERE id = :id AND id_status BETWEEN 2 AND 11");
             
             $sql->bindValue(":id_mensagem", $mensagem);
             $sql->bindValue(":lista_contatos_id", $str2);
             $sql->bindValue(":id_status", $status);
-            $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
             $sql->bindValue(":id", $id);
             $sql->execute();
             

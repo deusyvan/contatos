@@ -43,6 +43,18 @@ class Usuarios {
             return FALSE;
         }
     }
+    
+    public function getLista(){
+        $array = array();
+        global $pdo;
+        
+        $sql = $pdo->query("SELECT * FROM usuarios ORDER BY nome ASC");
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
 }
 
 ?>
