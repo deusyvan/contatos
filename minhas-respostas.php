@@ -33,7 +33,7 @@ if (empty($_SESSION['cLogin'])){
 				<td><?php echo $resposta['id']; ?></td>
 				<td><?php echo $resposta['id_mensagem']; ?></td>
 				<td><?php echo $resposta['lista_contatos_id']; ?></td>
-				<td><?php echo $resposta['status']; ?></td>
+				<td><?php echo utf8_decode($resposta['status']); ?></td>
 				<td><?php echo $resposta['data_envio']; ?></td>	
 				<td nowrap="nowrap">
 				<?php if($resposta['id_status'] == 9):?>
