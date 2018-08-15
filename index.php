@@ -1,5 +1,5 @@
 <?php require 'pages/header.php';
-	if ($_SESSION['cPerfil'] == 3){
+if (isset($_SESSION['cPerfil']) && $_SESSION['cPerfil'] == 3){
     ?>
         <div class="col-sm-10">
           <script> 
