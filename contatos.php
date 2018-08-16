@@ -8,11 +8,10 @@ if (empty($_SESSION['cLogin']) || $_SESSION['cPerfil'] > 1){
     exit;
 }
 ?>
-
-
  	<div class="container">
 		<h1>Todos Contatos</h1>
 		<a href="add-contatos.php" class="btn btn-default">Adicionar Contato</a>
+		<a href="importar.php" class="btn btn-primary">Importar Contatos</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -24,7 +23,6 @@ if (empty($_SESSION['cLogin']) || $_SESSION['cPerfil'] > 1){
 					<th>Ações</th>
 				</tr>
 			</thead>
-			
 			<?php 
 			require 'classes/contatos.class.php';
 			$c = new Contatos();
