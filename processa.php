@@ -25,8 +25,6 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
     foreach ($linhas as $linha){
         if($primeira_linha == FALSE){
             
-            $grupo = 9;
-            $email = 'TESTE';
             $status = 13;
             
             
