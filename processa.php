@@ -21,54 +21,59 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
     $linhas = $arquivo->getElementsByTagName("Row");
     //var_dump($linhas);
     $primeira_linha = true;
+    $duplicados = 0;
+    $novos = 0;
     
     foreach ($linhas as $linha){
         if($primeira_linha == FALSE){
             
             $status = 13;
+            $nome = $linha->getElementsByTagName("Data")->item(0)->nodeValue;
+            $cpf = $linha->getElementsByTagName("Data")->item(1)->nodeValue;
+            $endereco = $linha->getElementsByTagName("Data")->item(5)->nodeValue;
+            $email = $linha->getElementsByTagName("Data")->item(6)->nodeValue;
+            $ddd = $linha->getElementsByTagName("Data")->item(8)->nodeValue;
+            $celular = $linha->getElementsByTagName("Data")->item(9)->nodeValue;
+            $residencia = $linha->getElementsByTagName("Data")->item(10)->nodeValue;
+            $bairro = $linha->getElementsByTagName("Data")->item(11)->nodeValue;
+            $numero = $linha->getElementsByTagName("Data")->item(12)->nodeValue;
+            $complemento = $linha->getElementsByTagName("Data")->item(13)->nodeValue;
+            $cidade = $linha->getElementsByTagName("Data")->item(14)->nodeValue;
+            $estado = $linha->getElementsByTagName("Data")->item(15)->nodeValue;
+            $cep = $linha->getElementsByTagName("Data")->item(16)->nodeValue;
             
+            echo "nome: ".$nome.", cpf: ".$cpf.", endereco: ".$endereco.", email: ".$email.", ddd: ".$ddd.", celular: ".
+                  $celular.", residencia: ".$residencia.", bairro: ".$bairro.", nr: ".$numero.", complemento: ".
+                  $complemento.", cidade: ".$cidade.", estado: ".$estado.", cep: ".$cep."status:".$status."<br/>";
             
-            $nome = $linha->getElementsByTagName("Data")->item(1)->nodeValue;
-            echo "Nome: $nome <br/>";
+            //Consulta o banco
+            $existe = array();
+            $existe[] = $c->verificaContato($nome, $celular);
             
-            $cpf = $linha->getElementsByTagName("Data")->item(2)->nodeValue;
-            echo "CPF: $cpf <br/>";
+            if (!empty($existe)){
+               $id = $existe[0]['id'];
+               //Atualiza no banco
+               $c->atualiza($nome, $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero, 
+                            $complemento, $cidade,$estado, $cep, $id);
+               
+               $duplicados += 1;
+               
+            } else {
+                 echo "não existe!<BR>";
+                //Inserir no banco de dados:
+//                $c->addContato($nome, $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero,
+//                               $complemento, $cidade,$estado, $cep);
+                
+            } 
             
-            $endereco = $linha->getElementsByTagName("Data")->item(6)->nodeValue;
-            echo "Endereco: $endereco <br/>";
-            
-            $ddd = $linha->getElementsByTagName("Data")->item(9)->nodeValue;
-            echo "ddd: $ddd <br/>";
-            
-            $celular = $linha->getElementsByTagName("Data")->item(10)->nodeValue;
-            echo "Celular: $celular <br/>";
-            
-            $residencia = $linha->getElementsByTagName("Data")->item(11)->nodeValue;
-            echo "Residencia: $residencia <br/>";
-            
-            $bairro = $linha->getElementsByTagName("Data")->item(12)->nodeValue;
-            echo "Bairro: $bairro <br/>";
-            
-            $numero = $linha->getElementsByTagName("Data")->item(13)->nodeValue;
-            echo "Numero: $numero <br/>";
-            
-            $complemento = $linha->getElementsByTagName("Data")->item(14)->nodeValue;
-            echo "Complemento: $complemento <br/>";
-            
-            $cidade = $linha->getElementsByTagName("Data")->item(15)->nodeValue;
-            echo "Cidade: $cidade <br/>";
-            
-            $estado = $linha->getElementsByTagName("Data")->item(16)->nodeValue;
-            echo "$estado: $estado <br/>";
-            
-            $cep = $linha->getElementsByTagName("Data")->item(17)->nodeValue;
-            echo "Cep: $cep <br/>";
-            
-            //Inserir no banco de dados:
-            $c->addContato($grupo, $nome, $email, $celular,$residencia, $endereco, $status);
+            if (empty($nome)){
+                $primeira_linha = false;
+                exit();
+            }
             
         }
         
+        echo "Duplicados: ".$duplicados;
         $primeira_linha = false;
     }
 }

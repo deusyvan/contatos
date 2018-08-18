@@ -46,12 +46,32 @@ class Contatos{
         return $array;
     }
     
-    public function addContato($grupo, $nome, $email, $celular,$residencia, $endereco, $status){
+    public function verificaContato($nome, $celular){
+        $array = array();
+        global $pdo;
+        $sql = $pdo->prepare("SELECT * FROM contatos WHERE 
+                            nome like :nome OR celular like :celular");
+        $sql->bindValue(":nome", $nome);
+        $sql->bindValue(":celular", $celular);
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        } 
+        
+        return $array;
+        
+    }
+    
+    public function addContato($nome, $cpf, $endereco, $ddd, $celular, $residencia, $bairro, $numero,
+                                $complemento, $cidade,$estado, $cep){
         global $pdo;
         
         $sql = $pdo->prepare("INSERT INTO contatos
             SET nome = :nome,
+                cpf = :cpf,
                 endereco = :endereco,
+                ddd = :ddd, 
                 email1 = :email,
                 celular = :celular,
                 residencia = :residencia,
@@ -68,6 +88,50 @@ class Contatos{
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->bindValue(":id_status", $status);
         $sql->execute();
+    }
+    
+    public function atualiza($nome, $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero,
+        $complemento, $cidade,$estado, $cep, $id){
+        
+            global $pdo;
+            
+            $sql = $pdo->prepare("UPDATE contatos
+            SET
+                nome = :nome,
+                cpf = :cpf,
+                endereco = :endereco,
+                email1 = :email,
+                ddd = :ddd,
+                celular = :celular,
+                residencia = :residencia,
+                bairro = :bairro,
+                numero = :numero,
+                complemento = :complemento,
+                cidade = :cidade,
+                estado = :estado,
+                cep = :cep,
+                WHERE id = :id");
+            $sql->bindValue(":nome", $nome);
+            $sql->bindValue(":cpf", $cpf);
+            $sql->bindValue(":endereco", $endereco);
+            $sql->bindValue(":email", $email);
+            $sql->bindValue(":ddd", $ddd);
+            $sql->bindValue(":celular", $celular);
+            $sql->bindValue(":residencia", $residencia);
+            $sql->bindValue(":bairro", $bairro);
+            $sql->bindValue(":numero", $numero);
+            $sql->bindValue(":complemento", $complemento);
+            $sql->bindValue(":cidade", $cidade);
+            $sql->bindValue(":estado", $estado);
+            $sql->bindValue(":cep", $cep);
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+            echo "atualizaou";
+            $nome = "";
+            $sql = $pdo->prepare("SELECT nome FROM contatos WHERE id = :id AND nome LIKE '".$id."%'");
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+            $nome = $sql->fetch();
     }
     
     public function editContato($grupo, $nome, $email, $celular,$residencia ,$endereco, $status, $sexo, $email2, $ddd, 
