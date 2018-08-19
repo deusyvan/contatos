@@ -42,39 +42,52 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
             $estado = $linha->getElementsByTagName("Data")->item(15)->nodeValue;
             $cep = $linha->getElementsByTagName("Data")->item(16)->nodeValue;
             
-            echo "nome: ".$nome.", cpf: ".$cpf.", endereco: ".$endereco.", email: ".$email.", ddd: ".$ddd.", celular: ".
+//            $celular = "123456789";
+/*             echo "nome: ".$nome.", cpf: ".$cpf.", endereco: ".$endereco.", email: ".$email.", ddd: ".$ddd.", celular: ".
                   $celular.", residencia: ".$residencia.", bairro: ".$bairro.", nr: ".$numero.", complemento: ".
                   $complemento.", cidade: ".$cidade.", estado: ".$estado.", cep: ".$cep."status:".$status."<br/>";
-            
+ */            
             //Consulta o banco
             $existe = array();
             $existe[] = $c->verificaContato($nome, $celular);
+            $id = $existe[0]['id'];
+//            echo "id antes do if: ".$id."<br/>";
             
-            if (!empty($existe)){
-               $id = $existe[0]['id'];
+            if (!empty($id) && !is_null($nome)){
+               
                //Atualiza no banco
-               $c->atualiza($nome, $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero, 
-                            $complemento, $cidade,$estado, $cep, $id);
+               $c->atualiza($nome, $celular, $id);
+ //                          $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero, 
+ //                           $complemento, $cidade,$estado, $cep, $id);
                
                $duplicados += 1;
                
             } else {
-                 echo "não existe!<BR>";
+//                 echo "não existe!<BR>";
                 //Inserir no banco de dados:
-//                $c->addContato($nome, $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero,
+                 if(!empty($nome) && !is_null($nome)){
+                 $novos +=1;
+                 $c->addContato($nome, $celular);
+//                               $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero,
 //                               $complemento, $cidade,$estado, $cep);
-                
+                               
+                 }
             } 
             
-            if (empty($nome)){
+            if (empty($nome) && is_null($nome)){
                 $primeira_linha = false;
-                exit();
+                break;
             }
             
         }
         
-        echo "Duplicados: ".$duplicados;
         $primeira_linha = false;
     }
+    
+    $msg='<h4 class="alert-heading">Sucesso!</h4>
+           <p> Duplicados: '.$duplicados.'</p>'.
+           '<p> Novos: '.$novos.'</p>';
+    echo $msg;
+    
 }
 ?>

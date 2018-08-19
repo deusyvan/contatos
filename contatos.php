@@ -8,6 +8,12 @@ if (empty($_SESSION['cLogin']) || $_SESSION['cPerfil'] > 1){
     exit;
 }
 ?>
+	<div class="alert alert-danger" role="alert" hidden="true">
+			<?php if(!empty($msg)) {
+                    echo $msg;
+                }
+             ?>
+	</div>
  	<div class="container">
 		<h1>Todos Contatos</h1>
 		<a href="add-contatos.php" class="btn btn-default">Adicionar Contato</a>
