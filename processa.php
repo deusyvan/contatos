@@ -27,20 +27,21 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
     foreach ($linhas as $linha){
         if($primeira_linha == FALSE){
             
-            $status = 13;
+ //           $status = 13;
             $nome = $linha->getElementsByTagName("Data")->item(0)->nodeValue;
-            $cpf = $linha->getElementsByTagName("Data")->item(1)->nodeValue;
-            $endereco = $linha->getElementsByTagName("Data")->item(5)->nodeValue;
-            $email = $linha->getElementsByTagName("Data")->item(6)->nodeValue;
-            $ddd = $linha->getElementsByTagName("Data")->item(8)->nodeValue;
-            $celular = $linha->getElementsByTagName("Data")->item(9)->nodeValue;
-            $residencia = $linha->getElementsByTagName("Data")->item(10)->nodeValue;
-            $bairro = $linha->getElementsByTagName("Data")->item(11)->nodeValue;
-            $numero = $linha->getElementsByTagName("Data")->item(12)->nodeValue;
-            $complemento = $linha->getElementsByTagName("Data")->item(13)->nodeValue;
-            $cidade = $linha->getElementsByTagName("Data")->item(14)->nodeValue;
-            $estado = $linha->getElementsByTagName("Data")->item(15)->nodeValue;
-            $cep = $linha->getElementsByTagName("Data")->item(16)->nodeValue;
+//            $cpf = $linha->getElementsByTagName("Data")->item(1)->nodeValue;
+//            $endereco = $linha->getElementsByTagName("Data")->item(5)->nodeValue;
+//            $email = $linha->getElementsByTagName("Data")->item(6)->nodeValue;
+            $ddd = $linha->getElementsByTagName("Data")->item(1)->nodeValue;
+            $celular = $linha->getElementsByTagName("Data")->item(2)->nodeValue;
+            $id_grupo = $linha->getElementsByTagName("Data")->item(3)->nodeValue;
+//            $residencia = $linha->getElementsByTagName("Data")->item(10)->nodeValue;
+//            $bairro = $linha->getElementsByTagName("Data")->item(11)->nodeValue;
+//            $numero = $linha->getElementsByTagName("Data")->item(12)->nodeValue;
+//            $complemento = $linha->getElementsByTagName("Data")->item(13)->nodeValue;
+//            $cidade = $linha->getElementsByTagName("Data")->item(14)->nodeValue;
+//            $estado = $linha->getElementsByTagName("Data")->item(15)->nodeValue;
+//            $cep = $linha->getElementsByTagName("Data")->item(16)->nodeValue;
             
 //            $celular = "123456789";
 /*             echo "nome: ".$nome.", cpf: ".$cpf.", endereco: ".$endereco.", email: ".$email.", ddd: ".$ddd.", celular: ".
@@ -56,7 +57,7 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
             if (!empty($id) && !is_null($nome)){
                
                //Atualiza no banco
-               $c->atualiza($nome, $celular, $id);
+               $c->atualiza($nome, $ddd, $celular, $id_grupo, $id);
  //                          $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero, 
  //                           $complemento, $cidade,$estado, $cep, $id);
                
@@ -67,7 +68,7 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
                 //Inserir no banco de dados:
                  if(!empty($nome) && !is_null($nome)){
                  $novos +=1;
-                 $c->addContato($nome, $celular);
+                 $c->addContato($nome, $ddd, $celular, $id_grupo);
 //                               $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero,
 //                               $complemento, $cidade,$estado, $cep);
                                

@@ -63,13 +63,13 @@ class Contatos{
         
     }
     
-    public function addContato($nome, $celular){
+    public function addContato($nome, $ddd, $celular, $id_grupo){
 //                                $cpf, $endereco, $ddd, $celular, $residencia, $bairro, $numero,
 //                                $complemento, $cidade,$estado, $cep){
         global $pdo;
         
         $sql = $pdo->prepare("INSERT INTO contatos
-            SET nome = :nome, celular = :celular, id_status='13'");
+            SET nome = :nome, ddd = :ddd, celular = :celular, id_grupo = :id_grupo, id_status='13'");
 //                cpf = :cpf,
 //                endereco = :endereco,
 //                ddd = :ddd, 
@@ -83,7 +83,9 @@ class Contatos{
         $sql->bindValue(":nome", $nome);
 //        $sql->bindValue(":endereco", $endereco);
 //        $sql->bindValue(":email", $email);
+        $sql->bindValue(":ddd", $ddd);
         $sql->bindValue(":celular", $celular);
+        $sql->bindValue(":id_grupo", $id_grupo);
 //        $sql->bindValue(":residencia", $residencia);
 //        $sql->bindValue(":id_grupo", $grupo);
 //        $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
@@ -91,7 +93,7 @@ class Contatos{
         $sql->execute();
     }
     
-    public function atualiza($nome, $celular, $id){
+    public function atualiza($nome, $ddd, $celular, $id_grupo, $id){
  //       $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero,
  //       $complemento, $cidade,$estado, $cep, $id){
         
@@ -99,7 +101,7 @@ class Contatos{
             
             $sql = $pdo->prepare("UPDATE contatos
             SET
-                nome = :nome, celular = :celular WHERE id = :id");
+                nome = :nome, ddd = :ddd, celular = :celular, id_grupo = :id_grupo, id_status = '13' WHERE id = :id");
 //                cpf = :cpf,
 //                endereco = :endereco,
 //                email1 = :email,
@@ -118,7 +120,9 @@ class Contatos{
 //            $sql->bindValue(":endereco", $endereco);
 //            $sql->bindValue(":email", $email);
 //            $sql->bindValue(":ddd", $ddd);
+            $sql->bindValue(":ddd", $ddd);
             $sql->bindValue(":celular", $celular);
+            $sql->bindValue(":id_grupo", $id_grupo);
 //            $sql->bindValue(":residencia", $residencia);
 //            $sql->bindValue(":bairro", $bairro);
 //            $sql->bindValue(":numero", $numero);
@@ -129,10 +133,10 @@ class Contatos{
             $sql->bindValue(":id", $id);
             $sql->execute();
 //            echo "atualizou <br/>";
-            $nome = "";
-            $sql = $pdo->prepare("SELECT nome FROM contatos WHERE id = :id AND nome LIKE '".$id."%'");
-            $sql->bindValue(":id", $id);
-            $sql->execute();
+//            $nome = "";
+//            $sql = $pdo->prepare("SELECT nome FROM contatos WHERE id = :id AND nome LIKE '".$id."%'");
+//            $sql->bindValue(":id", $id);
+//            $sql->execute();
 //            $nome = $sql->fetch();
     }
     
