@@ -33,6 +33,7 @@ class Contatos{
     }
     
     public function getContato($id){
+        
         $array = array();
         global $pdo;
         $sql = $pdo->prepare("SELECT * FROM contatos WHERE id = :id");
@@ -41,6 +42,21 @@ class Contatos{
         
         if ($sql->rowCount() > 0){
             $array = $sql->fetch();
+        }
+        
+        return $array;
+    }
+    
+    public function getContatos($lista){
+        global $pdo;
+        $array = array();
+        $str = preg_replace('/[^\d\,]/', '',$lista);
+        $str2 = str_replace(",", ", ", $str);
+        $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.")");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchALL();
         }
         
         return $array;

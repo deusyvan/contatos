@@ -39,6 +39,8 @@ if (empty($_SESSION['cLogin'])){
 				<?php if($resposta['id_status'] == 9):?>
 					<p>OK</p>
 				<?php else: ?>
+					<a href="gerar-planilha.php?id=<?php echo $resposta['id']; ?>" class="btn btn-default">Gerar Excel</a>
+					<a href="visualizar-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-default">Visualizar</a>
 					<a href="editar-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-default">Editar</a>
 					<a href="excluir-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-danger">Excluir</a>
 				<?php endif; ?>	

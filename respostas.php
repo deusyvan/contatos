@@ -38,6 +38,8 @@ if (empty($_SESSION['cLogin']) || $_SESSION['cPerfil'] > 1){
 				<td><?php echo $resposta['usuario']; ?></td>
 				<td><?php echo $resposta['data_envio']; ?></td>	
 				<td nowrap="nowrap">
+					<a href="gerar-planilha.php?id=<?php echo $resposta['id']; ?>" class="btn btn-default">Gerar Excel</a>
+					<a href="visualizar-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-default">Visualizar</a>
 					<a href="editar-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-default">Editar</a>
 					<a href="excluir-resposta.php?id=<?php echo $resposta['id']; ?>" class="btn btn-danger">Excluir</a>
 				</td>	

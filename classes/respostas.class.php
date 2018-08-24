@@ -48,6 +48,22 @@ class Respostas{
         return $array;
     }
     
+    public function listarContatos($id){
+        echo "id da resposta: ".$id;
+        $lista = array();
+        global $pdo;
+        $sql = $pdo->prepare("SELECT * FROM respostas WHERE id = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetch();
+            $lista = $array["lista_contatos_id"];
+        }
+        
+        return $lista;
+        
+    }
+    
     public function addResp($mensagem, $lista, $status){
         $str = preg_replace('/[^\d\,]/', '',$lista);
         $str2 = str_replace(",", ", ", $str);
@@ -73,7 +89,7 @@ class Respostas{
                 ?>
                   <div class="col-sm-10">
                      <script> 
-                       swal("Beleza","Sua lista foi crida com sucesso, agora aguarde o envio, pode acompanhar pelo status. Bom Trabalho!","success");
+                       swal("Beleza","Sua lista foi crida com sucesso. Bom Trabalho!","success");
                      </script>
                   </div>
                 <?php
@@ -116,7 +132,7 @@ class Respostas{
             ?>
                   <div class="col-sm-10">
                      <script> 
-                       swal("Beleza","Sua lista foi alterada com sucesso, agora aguarde o envio, pode acompanhar pelo status. Bom Trabalho!","success");
+                       swal("Beleza","Sua lista foi alterada com sucesso. Bom Trabalho!","success");
                      </script>
                   </div>
                 <?php
