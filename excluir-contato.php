@@ -12,5 +12,5 @@ if (isset($_GET['id']) && !empty($_GET['id'])){
     $c->inabilitarContato($_GET['id']);
 }
 
-header("Location: meus-contatos.php");
+header("Location: contatos.php");
  

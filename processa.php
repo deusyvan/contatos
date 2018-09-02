@@ -29,6 +29,7 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
             
  //           $status = 13;
             $nome = $linha->getElementsByTagName("Data")->item(0)->nodeValue;
+            
 //            $cpf = $linha->getElementsByTagName("Data")->item(1)->nodeValue;
 //            $endereco = $linha->getElementsByTagName("Data")->item(5)->nodeValue;
 //            $email = $linha->getElementsByTagName("Data")->item(6)->nodeValue;
@@ -50,9 +51,9 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
  */            
             //Consulta o banco
             $existe = array();
-            $existe[] = $c->verificaContato($nome, $celular);
+            $existe[] = $c->verificaContato($celular);
             $id = $existe[0]['id'];
-//            echo "id antes do if: ".$id."<br/>";
+            //echo "id antes do if: ".$id."<br/>";
             
             if (!empty($id) && !is_null($nome)){
                
@@ -64,7 +65,7 @@ if (!empty($_FILES['arquivo']['tmp_name'])){
                $duplicados += 1;
                
             } else {
-//                 echo "não existe!<BR>";
+                // echo "não existe!<BR>";
                 //Inserir no banco de dados:
                  if(!empty($nome) && !is_null($nome)){
                  $novos +=1;

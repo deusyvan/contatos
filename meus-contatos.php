@@ -12,7 +12,7 @@ if (empty($_SESSION['cLogin'])){
 
  	<div class="container">
 		<h1>Meus Contatos</h1>
-		<a href="add-contatos.php" class="btn btn-default">Adicionar Contato</a>
+		<a href="adiciona.php" class="btn btn-default">Adicionar Contato</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>

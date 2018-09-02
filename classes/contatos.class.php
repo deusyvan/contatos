@@ -5,7 +5,7 @@ class Contatos{
         global $pdo;
         $array = array();
         $sql = $pdo->prepare("SELECT *,(select status.nome_status from status where status.id = contatos.id_status) as status FROM contatos where id_usuario  = :id_usuario 
-                                AND id_status BETWEEN 2 AND 13 OR id_usuario  = :id_usuario AND id_status is null order by id_status desc");
+                                AND id_status BETWEEN 2 AND 13 OR id_usuario  = :id_usuario AND id_status is null order by id");
         $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
         $sql->execute();
         
@@ -52,7 +52,7 @@ class Contatos{
         $array = array();
         $str = preg_replace('/[^\d\,]/', '',$lista);
         $str2 = str_replace(",", ", ", $str);
-        $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.")");
+        $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.") AND id_status > 1");
         $sql->execute();
         
         if ($sql->rowCount() > 0){
@@ -62,12 +62,10 @@ class Contatos{
         return $array;
     }
     
-    public function verificaContato($nome, $celular){
+    public function verificaContato($celular){
         $array = array();
         global $pdo;
-        $sql = $pdo->prepare("SELECT * FROM contatos WHERE 
-                            nome like :nome OR celular like :celular");
-        $sql->bindValue(":nome", $nome);
+        $sql = $pdo->prepare("SELECT * FROM contatos WHERE celular like :celular");
         $sql->bindValue(":celular", $celular);
         $sql->execute();
         
@@ -108,6 +106,24 @@ class Contatos{
 //        $sql->bindValue(":id_status", $status);
         $sql->execute();
     }
+    
+    public function adicionar($nome, $grupo, $email, $celular, $residencia, $endereco, $status, $id_usuario){
+        global $pdo;
+        
+        $sql = $pdo->prepare("INSERT INTO contatos
+            SET nome = :nome, id_grupo = :id_grupo, email1 = :email, celular = :celular,
+                residencia = :residencia, endereco = :endereco, id_status = :status, id_usuario = :id_usuario");
+        $sql->bindValue(":nome", $nome);
+        $sql->bindValue(":id_grupo", $grupo);
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":celular", $celular);
+        $sql->bindValue(":residencia", $residencia);
+        $sql->bindValue(":endereco", $endereco);
+        $sql->bindValue(":status", $status);
+        $sql->bindValue(":id_usuario", $id_usuario);
+        $sql->execute();
+    }
+    
     
     public function atualiza($nome, $ddd, $celular, $id_grupo, $id){
  //       $cpf, $endereco, $email, $ddd, $celular, $residencia, $bairro, $numero,
