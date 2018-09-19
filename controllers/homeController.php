@@ -7,15 +7,12 @@
  * Realiza o processamento no servidor, busca dados no model e envia tudo para as view                       *
  * **********************************************************************************************************/
  
-class homeController extends controller{
+class homeController {
     
+    //Todo controller possui seu index
     public function index(){
-        $dados = array();
-        
-        
-         
-        $this->loadTemplate('home', $dados);
-        
+       
+        echo "teste";
         
     }
    
