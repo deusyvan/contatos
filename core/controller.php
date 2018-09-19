@@ -21,6 +21,8 @@ class controller {
         require 'views/template.php';
     }
     
+    //Função recebe as mesmas informações carregando o view e realizando o extract. Essa função passa a ser usada dentro do template
+    //Ou seja carregando a view no template
     public function loadViewInTemplate($viewName, $viewData = array()){
         extract($viewData);
         require 'views/'.$viewName.'.php';

@@ -19,7 +19,10 @@ class homeController extends controller{
         
         
        //Puxaremos o nosso view após gerado todas a logica anteriormente e enviando junto o array dados
-       $this->loadView('home',$dados);
+       //$this->loadView('home',$dados);
+       
+        //Passamos agora a chamar nosso template
+        $this->loadTemplate('home',$dados);
         
     }
    
