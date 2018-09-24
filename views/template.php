@@ -21,6 +21,9 @@
 		
 		<!-- Bootstrap CSS -->
 		<link href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- Font Awesome CSS -->
+		<link href="<?php echo BASE_URL; ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 			
 		<!-- CSS Customizado -->
 		<link href="<?php echo BASE_URL; ?>assets/css/style.css" rel="stylesheet" type="text/css" />
