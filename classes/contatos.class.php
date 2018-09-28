@@ -52,7 +52,9 @@ class Contatos{
         $array = array();
         $str = preg_replace('/[^\d\,]/', '',$lista);
         $str2 = str_replace(",", ", ", $str);
-        $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.") AND id_status > 1");
+        $sql = $pdo->query("SELECT * FROM contatos WHERE id IN (".$str2.")
+		AND id_status <> 1 AND id_status <> 3 AND id_status <> 4 AND id_status <> 6
+        AND id_status <> 8 AND id_status <> 10 ORDER BY id asc");
         $sql->execute();
         
         if ($sql->rowCount() > 0){
