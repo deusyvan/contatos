@@ -19,15 +19,26 @@
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/images/favicon.ico">
 		
+		<!-- Switchery css -->
+		<link href="<?php echo BASE_URL; ?>assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
 		<!-- Bootstrap CSS -->
 		<link href="<?php echo BASE_URL; ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		
 		<!-- Font Awesome CSS -->
 		<link href="<?php echo BASE_URL; ?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-			
-		<!-- CSS Customizado -->
+		
+		<!-- Custom CSS -->
 		<link href="<?php echo BASE_URL; ?>assets/css/style.css" rel="stylesheet" type="text/css" />
-</head>
+		
+		<!-- Select2 -->
+		<link href="<?php echo BASE_URL; ?>assets/plugins/select2/css/select2.min.css" rel="stylesheet" />
+		
+		<link href="<?php echo BASE_URL; ?>assets/css/style-externo.css" rel="stylesheet" type="text/css" />
+		
+		<!-- DatePicker -->
+		<link href="<?php echo BASE_URL; ?>assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" /> 
+		<link href="<?php echo BASE_URL; ?>assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" /></head>
 
 <body class="adminbody">
 

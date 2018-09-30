@@ -18,8 +18,7 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
-		</div>
-		<!-- end row -->
+		</div><!-- end row -->
 		
 		<div class="alert alert-danger" role="alert" >
 			<h4 class="alert-heading">Atenção!</h4>
@@ -91,5 +90,4 @@
 				</div>
 			</div>
 		</div><!-- end row -->
-    </div>
-    <!-- END container-fluid -->
+    </div>    <!-- END container-fluid -->
