@@ -23,97 +23,73 @@
 		
 		<div class="alert alert-danger" role="alert" >
 			<h4 class="alert-heading">Atenção!</h4>
-			<p>Sistema de Controle de Processo sendo desenvolvido!</p>
+			<p>Sistema de Controle de Contatos sendo desenvolvido!</p>
 			<p>Todos as informações aqui encontradas são meramente <b>fictícias!</b></p>
-			<p>Para mais informações contactar: 3591 - 2º Sgt Deusyvan - Auxiliar Informática - <b>Desenvolvedor Responsável</b></p>
+			<p>Para mais informações contactar: 61 9 8548-1931 - Deusyvan - Analista de Sistemas - <b>Desenvolvedor Responsável</b></p>
 		</div>
 						
 		<div class="row">
 			<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 				<div class="card-box noradius noborder bg-default">
 					<i class="fa fa-file-text-o float-right text-white"></i>
-					<h6 class="text-white text-uppercase m-b-20">Processos no Estoque</h6>
-					<h1 class="m-b-20 text-white"><?php echo $total_processos; ?></h1>
-					<span class="text-white"><?php echo $total_processos_mes; ?> neste mês!</span>
+					<h6 class="text-white text-uppercase m-b-20">Total de Contatos</h6>
+					<h1 class="m-b-20 text-white"><?php echo $total_contatos; ?></h1>
+					<span class="text-white">Outras análises!</span>
 				</div>
 			</div>
 
 			<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 				<div class="card-box noradius noborder bg-warning">
 					<i class="fa fa-bar-chart float-right text-white"></i>
-					<h6 class="text-white text-uppercase m-b-20">Processos Em Análise</h6>
-					<h1 class="m-b-20 text-white counter"><?php echo $total_em_analise; ?></h1>
-					<span class="text-white"><?php echo round($percentual_analise,2); ?>% do Total</span>
+					<h6 class="text-white text-uppercase m-b-20">Contatos com Whatzap</h6>
+					<h1 class="m-b-20 text-white counter"><?php echo $total_whatzap; ?></h1>
+					<span class="text-white">Outras análises!</span>
 				</div>
 			</div>
 
  			<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 				<div class="card-box noradius noborder bg-info">
 					<i class="fa fa-user-o float-right text-white"></i>
-					<h6 class="text-white text-uppercase m-b-20">Atos no "TCU"</h6>
-					<h1 class="m-b-20 text-white counter"><?php echo $total_atos; ?></h1>
-					<span class="text-white"><?php echo $atos_sem_processo; ?> ainda não chegaram</span>
+					<h6 class="text-white text-uppercase m-b-20">Contatos On-line</h6>
+					<h1 class="m-b-20 text-white counter"><?php echo $total_online; ?></h1>
+					<span class="text-white">Outras análises!</span>
 				</div>
 			</div>
 
  			<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
 				<div class="card-box noradius noborder bg-danger">
 					<i class="fa fa-bell-o float-right text-white"></i>
-					<h6 class="text-white text-uppercase m-b-20">Diligências Vigentes</h6>
-					<h1 class="m-b-20 text-white counter"><?php echo $total_diligencias; ?></h1>
-					<span class="text-white"><?php echo $novas_diligencias; ?> Novas Diligências</span>
+					<h6 class="text-white text-uppercase m-b-20">Contatos Pendentes</h6>
+					<h1 class="m-b-20 text-white counter"><?php echo $total_pendentes; ?></h1>
+					<span class="text-white">Outras análises!</span>
 				</div>
 			</div>
-		</div>
-		<!-- end row -->
-
-		<div class="row">
-		
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">						
-				<div class="card mb-3">
-					<div class="card-header">
-						<h3><i class="fa fa-line-chart"></i> Atos do TCU</h3>
-							Comparativo de Atos do TCU no portal: E-Pessoal com os processos físicos no CCIEx 
-					</div>
-							
-					<div class="card-body">
-							<canvas id="lineChart"></canvas>
-					</div>							
-					<div class="card-footer small text-muted">Atualizado hoje às 10:59 AM</div>
+			<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+				<div class="card-box noradius noborder bg-default">
+					<i class="fa fa-file-text-o float-right text-white"></i>
+					<h6 class="text-white text-uppercase m-b-20">Contatos Retirados da Lista</h6>
+					<h1 class="m-b-20 text-white"><?php echo $total_nao_apoia; ?></h1>
+					<span class="text-white">Outras análises!</span>
 				</div>
-				<!-- end card-->
-									
 			</div>
 
-				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">						
-					<div class="card mb-3">
-						<div class="card-header">
-							<h3><i class="fa fa-bar-chart-o"></i> Tipos de Processos</h3>
-							 Gráfico com informações dos quantitativos de processos separados por tipo.
-						</div>
-							
-						<div class="card-body">
-							<canvas id="pieChart"></canvas>
-						</div>
-						<div class="card-footer small text-muted">Atualizado hoje às 10:59 AM</div>
-					</div><!-- end card-->					
+ 			<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+				<div class="card-box noradius noborder bg-info">
+					<i class="fa fa-user-o float-right text-white"></i>
+					<h6 class="text-white text-uppercase m-b-20">Contatos Sem Whatzap</h6>
+					<h1 class="m-b-20 text-white counter"><?php echo $total_sem_whatzap; ?></h1>
+					<span class="text-white">Outras análises!</span>
 				</div>
-				
-				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">						
-					<div class="card mb-3">
-						<div class="card-header">
-							<h3><i class="fa fa-bar-chart-o"></i> Diligências Realizadas por Área</h3>
-							 Gráfico mostra os quantitativos de diligências por RM
-						</div>
-							
-						<div class="card-body">
-							<canvas id="doughnutChart"></canvas>
-						</div>
-						<div class="card-footer small text-muted">Atualizado hoje às 10:59 AM</div>
-					</div><!-- end card-->					
+			</div>
+
+ 			<div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
+				<div class="card-box noradius noborder bg-danger">
+					<i class="fa fa-bell-o float-right text-white"></i>
+					<h6 class="text-white text-uppercase m-b-20">Contatos Aceitos</h6>
+					<h1 class="m-b-20 text-white counter"><?php echo $total_aceitos; ?></h1>
+					<span class="text-white">Outras análises!</span>
 				</div>
-				
-		</div>
-		<!-- end row -->
+			</div>
+		</div><!-- end row -->
     </div>
     <!-- END container-fluid -->

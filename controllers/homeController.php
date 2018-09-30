@@ -21,6 +21,27 @@ class homeController extends controller{
        //Puxaremos o nosso view após gerado todas a logica anteriormente e enviando junto o array dados
        //$this->loadView('home',$dados);
        
+        //Buscando objetos das classes
+        $c = new Contatos();
+        
+        //Chama funções
+        $total_contatos = $c->getTotalGeral();
+        $whatzap = $c->getTotalWhatzap();
+        $on_line = $c->getTotalOnLine();
+        $total_pendentes = $c->getTotalPendentes();
+        $total_nao_apoia = $c->getNaoApoia();
+        $total_sem_whatzap = $c->getSemWhatsap();
+        $total_aceitos = $c->getAceitos();
+        
+        //Inserindo resultado como objeto para enviar por dados
+        $dados['total_contatos'] = $total_contatos; 
+        $dados['total_whatzap'] = $whatzap; 
+        $dados['total_online'] = $on_line; 
+        $dados['total_pendentes'] = $total_pendentes; 
+        $dados['total_nao_apoia'] = $total_nao_apoia; 
+        $dados['total_sem_whatzap'] = $total_sem_whatzap;
+        $dados['total_aceitos'] = $total_aceitos;
+       
         //Passamos agora a chamar nosso template
         $this->loadTemplate('home',$dados);
         

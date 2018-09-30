@@ -185,7 +185,7 @@
 						
 						<!-- Menu Logado -->
                         <li class="list-inline-item dropdown notif">
-                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href=" /contatos/login.php" role="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -237,15 +237,12 @@
 					<li class="submenu">
 						<a href="<?php echo BASE_URL; ?>"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
-                    <li class="submenu">
-                        <a href="<?php echo BASE_URL; ?>atosTcu"><i class="fa fa-upload bigfonts" aria-hidden="true"></i><span> Importar Atos</span> </a>
-                    </li>
 					<li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> Tabelas de Processos</span> <span class="menu-arrow"></span></a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> Tabelas de Contatos</span> <span class="menu-arrow"></span></a>
 							<ul class="list-unstyled">
-								<li ><a href="<?php echo BASE_URL; ?>processosDeposito">Depósito</a></li>
-								<li><a href="<?php echo BASE_URL; ?>processosAnalise">Em Análise</a></li>
-								<li><a href="<?php echo BASE_URL; ?>processosDevolvidos">Devolvidos</a></li>
+								<li ><a href="<?php echo BASE_URL; ?>processosDeposito">Cadastrados On-line</a></li>
+								<li><a href="<?php echo BASE_URL; ?>processosAnalise">Corrigidos</a></li>
+								<li><a href="<?php echo BASE_URL; ?>processosDevolvidos">Pendentes</a></li>
 							</ul>
                     </li>
                     <li class="submenu">
