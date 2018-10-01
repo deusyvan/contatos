@@ -50,7 +50,7 @@
 
 		<!-- LOGO -->
         <div class="headerbar-left">
-			<a href="<?php echo BASE_URL; ?>" class="logo"><img alt="Logo" src="assets/images/logo.png" /> <span>SisContCon</span></a>
+			<a href="<?php echo BASE_URL; ?>home" class="logo"><img alt="Logo" src="assets/images/logo.png" /> <span>SisContCon</span></a>
         </div>
 
         <nav class="navbar-custom">
@@ -203,22 +203,17 @@
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                 <!-- item-->
                                 <div class="dropdown-item noti-title">
-                                    <h5 class="text-overflow"><small>Olá, administrador</small> </h5>
+                                    <h5 class="text-overflow"><small>Olá, <?php echo $_SESSION['cNome']?></small> </h5>
                                 </div>
 
                                 <!-- item-->
-                                <a href="pro-profile.html" class="dropdown-item notify-item">
-                                    <i class="fa fa-user"></i> <span>Perfil</span>
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="fa fa-user"></i> <span>Perfil: <?php echo $_SESSION['cPerfil']?></span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="<?php echo BASE_URL; ?>login/sair" class="dropdown-item notify-item">
                                     <i class="fa fa-power-off"></i> <span>Sair</span>
-                                </a>
-								
-								<!-- item-->
-                                <a target="_blank" href="#" class="dropdown-item notify-item">
-                                    <i class="fa fa-external-link"></i> <span>Nova página</span>
                                 </a>
                             </div>
                         </li>
@@ -252,35 +247,28 @@
 					<li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> Tabelas de Contatos</span> <span class="menu-arrow"></span></a>
 							<ul class="list-unstyled">
-								<li ><a href="<?php echo BASE_URL; ?>processosDeposito">Cadastrados On-line</a></li>
-								<li><a href="<?php echo BASE_URL; ?>processosAnalise">Corrigidos</a></li>
-								<li><a href="<?php echo BASE_URL; ?>processosDevolvidos">Pendentes</a></li>
+								<li ><a href="<?php echo BASE_URL; ?>home">Cadastrados On-line</a></li>
+								<li><a href="<?php echo BASE_URL; ?>home">Corrigidos</a></li>
+								<li><a href="<?php echo BASE_URL; ?>home">Pendentes</a></li>
 							</ul>
                     </li>
                     <li class="submenu">
                         <a class="active" href="#"><i class="fa fa-fw fa-file-text-o"></i> <span> Cadastro </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
-                                <li class="active"><a href="<?php echo BASE_URL; ?>processos">Processo</a></li>
-                                <!-- <li><a href="forms-general.html">General Elements</a></li>
-								<li><a href="forms-select2.html">Select2</a></li>
-                                <li><a href="forms-text-editor.html">Text Editors</a></li>
-								<li><a href="forms-upload.html">Multiple File Upload</a></li>
-								<li><a href="forms-datetime-picker.html">Date and Time Picker</a></li>
-								<li><a href="forms-color-picker.html">Color Picker</a></li> -->
+                                <li class="active"><a href="#">Contatos</a></li>
+                                <li><a href="#">Mensagens</a></li>
+								<li><a href="#">Respostas</a></li>
                             </ul>
                     </li>
                     <li class="submenu">
                         <a class="pro" href="#"><i class="fa fa-fw fa-star"></i><span> Administração </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">								
-                                <li><a target="_blank" href="<?php echo BASE_URL; ?>tiposProcesso">Tipos de Processo</a></li>
-								<li><a href="pro-settings.html">Configurações</a></li>
-								<li><a href="pro-profile.html">Meu Perfil</a></li>
-                                <li><a href="pro-users.html">Usuários</a></li>
-                                <li><a href="pro-articles.html">Artigos</a></li>
-                                <li><a href="pro-categories.html">Categorias</a></li>
-								<li><a href="pro-pages.html">Páginas</a></li>								
-                                <li><a href="pro-contact-messages.html">Mensagens e Contatos</a></li>
-								<li><a href="pro-slider.html">Slider</a></li>
+                                <li><a target="_blank" href="#">Usuários</a></li>
+								<li><a href="#">Status</a></li>
+								<li><a href="#">Perfil</a></li>
+                                <li><a href="#">Grupos</a></li>
+                                <li><a href="#">Categorias</a></li>
+                                <li><a href="#">Mensagens e Contatos</a></li>
                             </ul>
                     </li>
                     
