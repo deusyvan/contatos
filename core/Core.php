@@ -44,7 +44,7 @@ class Core {
             
             
         } else {//Se não enviou nada vai direto para o homecontroller
-            $currentController = 'homeController';
+            $currentController = 'loginController';
             $currentAction = 'index';
         }
         
