@@ -23,7 +23,6 @@
 		<div class="alert alert-danger" role="alert" >
 			<h4 class="alert-heading">Atenção!</h4>
 			<p>Sistema de Controle de Contatos sendo desenvolvido!</p>
-			<p>Todos as informações aqui encontradas são meramente <b>fictícias!</b></p>
 			<p>Para mais informações contactar: 61 9 8548-1931 - Deusyvan - Analista de Sistemas - <b>Desenvolvedor Responsável</b></p>
 		</div>
 						

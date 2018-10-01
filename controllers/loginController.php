@@ -60,4 +60,9 @@ class loginController extends controller{
         $this->loadView('login',$dados);
        
     }
+    
+    public function sair(){
+        unset($_SESSION['cLogin']);
+        header("Location: ".BASE_URL);
+    }
 }

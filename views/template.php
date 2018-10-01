@@ -212,8 +212,8 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="#" class="dropdown-item notify-item">
-                                    <i class="fa fa-power-off"></i> <span>Logout</span>
+                                <a href="<?php echo BASE_URL; ?>login/sair" class="dropdown-item notify-item">
+                                    <i class="fa fa-power-off"></i> <span>Sair</span>
                                 </a>
 								
 								<!-- item-->
@@ -247,7 +247,7 @@
 			<div id="sidebar-menu">
 			<ul>
 					<li class="submenu">
-						<a href="<?php echo BASE_URL; ?>"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+						<a href="<?php echo BASE_URL; ?>home"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 					<li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> Tabelas de Contatos</span> <span class="menu-arrow"></span></a>
