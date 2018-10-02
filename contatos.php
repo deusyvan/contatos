@@ -22,7 +22,6 @@ if (empty($_SESSION['cLogin']) || $_SESSION['cPerfil'] > 1){
 			<thead>
 				<tr>
 					<th>Nome</th>
-					<th>Endereço</th>
 					<th>E-mail</th>
 					<th>Celular</th>
 					<th>Status</th>
@@ -38,7 +37,6 @@ if (empty($_SESSION['cLogin']) || $_SESSION['cPerfil'] > 1){
 			?>
 			<tr>
 				<td><?php echo $contato['nome']; ?></td>
-				<td><?php echo $contato['endereco']; ?></td>
 				<td><?php echo $contato['email1']; ?></td>
 				<td><?php echo $contato['celular']; ?></td>	
 				<td><?php echo $contato['status']; ?></td>

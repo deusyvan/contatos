@@ -79,5 +79,62 @@ class Contatos extends model{
         
         return $array;
     }
+    
+    public function getListaApoia(){
+        $array = array();
+        $sql = $this->db->query("SELECT contatos.id as id, usuarios.nome as usuario,contatos.nome as nome,
+                                contatos.celular as celular FROM contatos
+                                INNER JOIN usuarios ON usuarios.id = contatos.id_usuario
+                                WHERE contatos.id_status = '14' ORDER BY nome ASC");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
+    
+    public function getListaSemApoio(){
+        $array = array();
+        $sql = $this->db->query("SELECT contatos.id as id, usuarios.nome as usuario,contatos.nome as nome,
+                                contatos.celular as celular FROM contatos
+                                INNER JOIN usuarios ON usuarios.id = contatos.id_usuario
+                                WHERE contatos.id_status = '6' ORDER BY nome ASC");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
+    
+    public function getMeusContatos(){
+        $array = array();
+        $sql = $this->db->prepare("SELECT *,(select status.nome_status from status where status.id = contatos.id_status) as status FROM contatos where id_usuario  = :id_usuario
+                                AND id_status BETWEEN 2 AND 15 OR id_usuario  = :id_usuario AND id_status is null order by id");
+        $sql->bindValue(":id_usuario", $_SESSION['cLogin']);
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
+    
+    public function getTodosContatos(){
+        global $pdo;
+        $array = array();
+        $sql = $this->db->query("SELECT *,(select status.nome_status from status where status.id = contatos.id_status) as status
+                             FROM contatos order by id asc");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
 }
 ?>

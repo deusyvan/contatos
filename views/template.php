@@ -249,15 +249,16 @@
 							<ul class="list-unstyled">
 								<li ><a href="<?php echo BASE_URL; ?>contatosOnLine">Cadastrados On-line</a></li>
 								<li><a href="<?php echo BASE_URL; ?>contatosComWhatzap">Com Whatzap</a></li>
-								<li><a href="<?php echo BASE_URL; ?>home">Pendentes</a></li>
+								<li><a href="<?php echo BASE_URL; ?>contatosNaoApoia">Sem Apoio</a></li>
+								<li><a href="<?php echo BASE_URL; ?>contatosApoia"> Com Apoio</a></li>
 							</ul>
                     </li>
                     <li class="submenu">
                         <a class="active" href="#"><i class="fa fa-fw fa-file-text-o"></i> <span> Cadastro </span> <span class="menu-arrow"></span></a>
                             <ul class="list-unstyled">
-                                <li class="active"><a href="#">Contatos</a></li>
-                                <li><a href="#">Mensagens</a></li>
-								<li><a href="#">Respostas</a></li>
+                                <li class="active"><a href="<?php echo BASE_URL; ?>meusContatos">Meus Contatos</a></li>
+								<li><a href="<?php echo BASE_URL; ?>minhasRespostas">Minhas Respostas</a></li>
+                                <li><a href="<?php echo BASE_URL; ?>mensagens">Mensagens</a></li>
                             </ul>
                     </li>
                     <li class="submenu">
@@ -268,6 +269,7 @@
 								<li><a href="#">Perfil</a></li>
                                 <li><a href="#">Grupos</a></li>
                                 <li><a href="#">Categorias</a></li>
+                                <li><a href="<?php echo BASE_URL; ?>contatosGeral">Contatos em Geral</a></li>
                                 <li><a href="#">Mensagens e Contatos</a></li>
                             </ul>
                     </li>
