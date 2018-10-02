@@ -1,11 +1,9 @@
-<?php
-class Grupos {
+<?php 
+class Grupos extends model{
     
     public function getLista(){
         $array = array();
-        global $pdo;
-        
-        $sql = $pdo->query("SELECT * FROM grupos ORDER BY nome_grupo ASC");
+        $sql = $this->db->query("SELECT * FROM grupos ORDER BY nome_grupo ASC");
         if($sql->rowCount() > 0){
             $array = $sql->fetchAll();
         }
@@ -13,4 +11,3 @@ class Grupos {
         return $array;
     }
 }
-?>

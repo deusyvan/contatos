@@ -136,5 +136,27 @@ class Contatos extends model{
         }
         return $array;
     }
+    
+    public function addContato($grupo, $nome, $email, $celular,$residencia, $endereco, $status, $usuario){
+        $sql = $this->db->prepare("INSERT INTO contatos SET 
+                        id_grupo = :grupo, 
+                        nome = :nome, 
+                        email1 = :email, 
+                        celular = :celular,
+                        residencia = :residencia,
+                        endereco = :endereco, 
+                        id_status =:status,
+                        id_usuario =:usuario");
+        $sql->bindValue(":id_grupo", $grupo);
+        $sql->bindValue(":nome", $nome);
+        $sql->bindValue(":email", $email);
+        $sql->bindValue(":celular", $celular);
+        $sql->bindValue(":residencia", $residencia);
+        $sql->bindValue(":endereco", $endereco);
+        $sql->bindValue(":status", $status);
+        $sql->bindValue(":usuario", $usuario);
+        $sql->execute();
+        var_dump($sql);
+        
+    }
 }
-?>

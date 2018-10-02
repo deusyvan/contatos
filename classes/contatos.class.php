@@ -124,6 +124,7 @@ class Contatos{
         $sql->bindValue(":status", $status);
         $sql->bindValue(":id_usuario", $id_usuario);
         $sql->execute();
+        
     }
     
     
