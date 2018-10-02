@@ -49,5 +49,35 @@ class Contatos extends model{
         $row = $sql->fetch();
         return $row['c'];
     }
+    
+    public function getListaOnLine(){
+        $array = array();
+        $sql = $this->db->query("SELECT contatos.id as id, usuarios.nome as usuario,contatos.nome as nome, 
+                                contatos.celular as celular FROM contatos
+                                INNER JOIN usuarios ON usuarios.id = contatos.id_usuario
+                                WHERE contatos.id_status = '13' ORDER BY nome ASC");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
+    
+    public function getListaComWhatzap(){
+        $array = array();
+        $sql = $this->db->query("SELECT contatos.id as id, usuarios.nome as usuario,contatos.nome as nome,
+                                contatos.celular as celular FROM contatos
+                                INNER JOIN usuarios ON usuarios.id = contatos.id_usuario
+                                WHERE contatos.id_status = '11' ORDER BY nome ASC");
+        $sql->execute();
+        
+        if ($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
 }
 ?>

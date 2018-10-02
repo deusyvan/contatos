@@ -247,8 +247,8 @@
 					<li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> Tabelas de Contatos</span> <span class="menu-arrow"></span></a>
 							<ul class="list-unstyled">
-								<li ><a href="<?php echo BASE_URL; ?>home">Cadastrados On-line</a></li>
-								<li><a href="<?php echo BASE_URL; ?>home">Corrigidos</a></li>
+								<li ><a href="<?php echo BASE_URL; ?>contatosOnLine">Cadastrados On-line</a></li>
+								<li><a href="<?php echo BASE_URL; ?>contatosComWhatzap">Com Whatzap</a></li>
 								<li><a href="<?php echo BASE_URL; ?>home">Pendentes</a></li>
 							</ul>
                     </li>
